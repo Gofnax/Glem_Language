@@ -27,8 +27,8 @@ t_GREATEREQUAL = r'>='
 t_LESSEQUAL = r'<='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_LCURLY = r'{'
-t_RCURLY = r'}'
+t_LCURLY = r'\{'
+t_RCURLY = r'\}'
 t_LAMBDA = r'Lambda'
 t_SEMICOLON = r';'
 t_COMMA = r','
@@ -36,16 +36,19 @@ t_COMMA = r','
 # Define rules for keywords
 t_MEY = r'mey'
 
+
 # Regular expressions with some action
 def t_NUMBER(t):
     r'-?\d+'
     t.value = int(t.value)
     return t
 
+
 def t_BOOLEAN(t):
     r'true|false'
     t.value = True if t.value == 'true' else False
     return t
+
 
 def t_IDENTIFIER(t):
     r'[a-zA-Z_][a-zA-Z0-9_]*'
@@ -55,6 +58,7 @@ def t_IDENTIFIER(t):
 # Ignore whitespace and comments
 t_ignore = ' \t'
 t_ignore_COMMENT = r'\#.*'
+
 
 # Error handling rule
 def t_error(t):

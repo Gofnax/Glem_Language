@@ -1,11 +1,15 @@
 from parser import parser
+
+
 class Interpreter:
     def __init__(self):
         self.call_stack = []
 
     def eval(self, node, env={}):
         if isinstance(node, tuple):
-            if node[0] == 'number':
+            if node[0] == 'program':
+                return self.eval(node[1], env)
+            elif node[0] == 'number':
                 return node[1]
             elif node[0] == 'boolean':
                 return node[1]
@@ -62,8 +66,9 @@ class Interpreter:
 
 # Test the interpreter
 interpreter = Interpreter()
-# ast = parser.parse('3 + 5;')
+# ast = parser.parse('!true;')
+ast = parser.parse('3 + 5 * 2;')
 # '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
-ast = parser.parse('mey {factorial, (n,)} (n == 0) || (n * factorial(n - 1)); factorial(5);')
+# ast = parser.parse('mey {factorial, (n,)} (n == 0) || (n * factorial(n - 1)); factorial(5);')
 result = interpreter.eval(ast)
 print(result)
