@@ -6,7 +6,8 @@ tokens = (
     'PLUS', 'MINUS', 'MULTIPLY', 'DIVIDE', 'MODULO',
     'AND', 'OR', 'NOT',
     'EQUAL', 'NOTEQUAL', 'GREATER', 'LESS', 'GREATEREQUAL', 'LESSEQUAL',
-    'LPAREN', 'RPAREN', 'LAMBDA', 'SEMICOLON',
+    'LPAREN', 'RPAREN', 'LCURLY', 'RCURLY', 'LAMBDA', 'SEMICOLON', 'MEY',
+    'COMMA'
 )
 
 # Regular expressions for tokens
@@ -26,8 +27,14 @@ t_GREATEREQUAL = r'>='
 t_LESSEQUAL = r'<='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
+t_LCURLY = r'{'
+t_RCURLY = r'}'
 t_LAMBDA = r'Lambda'
 t_SEMICOLON = r';'
+t_COMMA = r','
+
+# Define rules for keywords
+t_MEY = r'mey'
 
 # Regular expressions with some action
 def t_NUMBER(t):

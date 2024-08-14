@@ -62,7 +62,8 @@ class Interpreter:
 
 # Test the interpreter
 interpreter = Interpreter()
-ast = parser.parse('3 + 5;')
-#ast = parser.parse('mey {"name": "factorial", "arguments": (n,)} (n == 0) or (n * factorial(n - 1)); factorial(5);')
+# ast = parser.parse('3 + 5;')
+# '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
+ast = parser.parse('mey {factorial, (n,)} (n == 0) || (n * factorial(n - 1)); factorial(5);')
 result = interpreter.eval(ast)
 print(result)

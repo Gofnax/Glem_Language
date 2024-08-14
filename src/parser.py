@@ -15,6 +15,9 @@ functions = {}
 # Dictionary to store the AST
 names = {}
 
+# Define the start rule
+start = 'program'
+
 # Grammar rules
 def p_program(p):
     '''program : statement_list'''
@@ -74,15 +77,15 @@ def p_expression_lambda(p):
     p[0] = ('lambda', p[2], p[4])
 
 def p_function_definition(p):
-    '''function_definition : "mey" LPAREN "name" ':' IDENTIFIER ',' "arguments" ':' LPAREN arg_list RPAREN RPAREN expression SEMICOLON'''
-    func_name = p[5]
-    args = p[10]
-    body = p[12]
+    '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
+    func_name = p[3]
+    args = p[6]
+    body = p[9]
     functions[func_name] = ('function', args, body)
 
 def p_arg_list(p):
     '''arg_list : IDENTIFIER
-                | IDENTIFIER ',' arg_list'''
+                | IDENTIFIER COMMA arg_list'''
     if len(p) == 2:
         p[0] = [p[1]]
     else:
