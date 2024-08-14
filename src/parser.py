@@ -17,7 +17,7 @@ functions = {}
 names = {}
 
 # Define the start rule
-start = 'program'
+# start = 'program'
 
 
 # Grammar rules
