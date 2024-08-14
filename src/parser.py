@@ -30,9 +30,9 @@ def p_statement_list(p):
     '''statement_list : statement_list statement
                       | statement'''
     if len(p) == 3:
-        p[0] = p[1] + p[2]
+        p[0] = p[1] + [p[2]]
     else:
-        p[0] = p[1]
+        p[0] = [p[1]]
 
 
 def p_statement(p):
