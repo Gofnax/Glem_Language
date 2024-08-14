@@ -1,0 +1,76 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DEFINER
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement_list statement
+Rule 3     statement_list -> statement
+Rule 4     statement -> expression SEMICOLON
+Rule 5     statement -> function_definition
+Rule 6     expression -> expression PLUS expression
+Rule 7     expression -> expression MINUS expression
+Rule 8     expression -> expression MULTIPLY expression
+Rule 9     expression -> expression DIVIDE expression
+Rule 10    expression -> expression MODULO expression
+Rule 11    expression -> expression AND expression
+Rule 12    expression -> expression OR expression
+Rule 13    expression -> expression EQUAL expression
+Rule 14    expression -> expression NOTEQUAL expression
+Rule 15    expression -> expression GREATER expression
+Rule 16    expression -> expression LESS expression
+Rule 17    expression -> expression GREATEREQUAL expression
+Rule 18    expression -> expression LESSEQUAL expression
+Rule 19    expression -> NOT expression
+Rule 20    expression -> LPAREN expression RPAREN
+Rule 21    expression -> NUMBER
+Rule 22    expression -> BOOLEAN
+Rule 23    expression -> IDENTIFIER
+Rule 24    expression -> LAMBDA IDENTIFIER . expression
+Rule 25    function_definition -> mey LPAREN IDENTIFIER , LPAREN arg_list RPAREN RPAREN expression SEMICOLON
+Rule 26    arg_list -> IDENTIFIER
+Rule 27    arg_list -> IDENTIFIER , arg_list
+Rule 28    expression -> IDENTIFIER LPAREN arg_list RPAREN
+
+Terminals, with rules where they appear
+
+,                    : 25 27
+.                    : 24
+AND                  : 11
+BOOLEAN              : 22
+DEFINER              : 
+DIVIDE               : 9
+EQUAL                : 13
+GREATER              : 15
+GREATEREQUAL         : 17
+IDENTIFIER           : 23 24 25 26 27 28
+LAMBDA               : 24
+LESS                 : 16
+LESSEQUAL            : 18
+LPAREN               : 20 25 25 28
+MINUS                : 7
+MODULO               : 10
+MULTIPLY             : 8
+NOT                  : 19
+NOTEQUAL             : 14
+NUMBER               : 21
+OR                   : 12
+PLUS                 : 6
+RPAREN               : 20 25 25 28
+SEMICOLON            : 4 25
+error                : 
+
+Nonterminals, with rules where they appear
+
+arg_list             : 25 27 28
+expression           : 4 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 20 24 25
+function_definition  : 5
+mey                  : 25
+program              : 0
+statement            : 2 3
+statement_list       : 1 2
+
