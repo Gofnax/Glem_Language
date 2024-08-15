@@ -110,9 +110,9 @@ def p_function_definition(p):
 def p_arg_list(p):
     '''arg_list : IDENTIFIER
                 | IDENTIFIER COMMA arg_list'''
+    names[p[1]] = p[1]
     if len(p) == 2:
         p[0] = [p[1]]
-        names[p[1]] = p[1]
     else:
         p[0] = [p[1]] + p[3]
 

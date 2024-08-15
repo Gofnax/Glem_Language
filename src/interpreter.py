@@ -78,7 +78,7 @@ interpreter = Interpreter()
 # ast = parser.parse('-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;')
 # '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY expression SEMICOLON RCURLY SEMICOLON'''
 # ast = parser.parse('mey {factorial, (n)} (n == 0) || (n * factorial(n - 1)); true; factorial(5);')
-ast = parser.parse('mey {addOne, (n)} {n * 2; n + 3; !true; n - 2 * 3;}; addOne(9 + 1);')
+ast = parser.parse('mey {addOne, (n, m)} {n * 2; m + 3; !true; n - 2 * 3;}; addOne(9 + 1, 200);')
 # ast = parser.parse('Lambda x.(x+1);')
 result = interpreter.eval(ast)
 # print(result)
