@@ -9,7 +9,9 @@ class Interpreter:
         if isinstance(node, tuple):
             if node[0] == 'program':
                 for stmt in node[1]:
-                    print(self.eval(stmt, env))
+                    eval_string = str(self.eval(stmt, env))
+                    if not eval_string:
+                        print(eval_string)
                 return
             elif node[0] == 'number':
                 return node[1]
@@ -65,16 +67,18 @@ class Interpreter:
     def call_function(self, func, args, env):
         func_body, func_args = func[1], func[0]
         local_env = {arg: self.eval(arg_val, env) for arg, arg_val in zip(func_args, args)}
-        return self.eval(func_body, {**env, **local_env})
+        for stmt in func_body:
+            print(self.eval(stmt, {**env, **local_env}))
+        return
 
 
 # Test the interpreter
 interpreter = Interpreter()
 # ast = parser.parse('!true;')
 # ast = parser.parse('-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;')
-# '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
+# '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY expression SEMICOLON RCURLY SEMICOLON'''
 # ast = parser.parse('mey {factorial, (n)} (n == 0) || (n * factorial(n - 1)); true; factorial(5);')
-ast = parser.parse('mey {addOne, (n)} n * 2; !true; addOne(7 + 1);')
+ast = parser.parse('mey {addOne, (n)} {n * 2; n + 3; !true; n - 2 * 3;}; addOne(9 + 1);')
 # ast = parser.parse('Lambda x.(x+1);')
 result = interpreter.eval(ast)
 # print(result)

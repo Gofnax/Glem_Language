@@ -28,7 +28,7 @@ Rule 22    expression -> BOOLEAN
 Rule 23    expression -> IDENTIFIER
 Rule 24    expression -> IDENTIFIER LPAREN param_list RPAREN
 Rule 25    expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
-Rule 26    function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+Rule 26    function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 Rule 27    arg_list -> IDENTIFIER
 Rule 28    arg_list -> IDENTIFIER COMMA arg_list
 Rule 29    param_list -> expression
@@ -46,7 +46,7 @@ GREATER              : 15
 GREATEREQUAL         : 17
 IDENTIFIER           : 23 24 25 26 27 28
 LAMBDA               : 25
-LCURLY               : 26
+LCURLY               : 26 26
 LESS                 : 16
 LESSEQUAL            : 18
 LPAREN               : 20 24 25 26
@@ -59,7 +59,7 @@ NOTEQUAL             : 13
 NUMBER               : 21
 OR                   : 12
 PLUS                 : 6
-RCURLY               : 26
+RCURLY               : 26 26
 RPAREN               : 20 24 25 26
 SEMICOLON            : 4 26
 error                : 
@@ -67,12 +67,12 @@ error                :
 Nonterminals, with rules where they appear
 
 arg_list             : 26 28
-expression           : 4 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 20 25 26 29 30
+expression           : 4 6 6 7 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 18 19 20 25 29 30
 function_definition  : 5
 param_list           : 24 30
 program              : 0
 statement            : 2 3
-statement_list       : 1 2
+statement_list       : 1 2 26
 
 Parsing method: LALR
 
@@ -104,7 +104,7 @@ state 0
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
     (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
-    (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -152,7 +152,7 @@ state 2
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
     (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
-    (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     $end            reduce using rule 1 (program -> statement_list .)
     NOT             shift and go to state 6
@@ -179,6 +179,7 @@ state 3
     LAMBDA          reduce using rule 3 (statement_list -> statement .)
     MEY             reduce using rule 3 (statement_list -> statement .)
     $end            reduce using rule 3 (statement_list -> statement .)
+    RCURLY          reduce using rule 3 (statement_list -> statement .)
 
 
 state 4
@@ -226,6 +227,7 @@ state 5
     LAMBDA          reduce using rule 5 (statement -> function_definition .)
     MEY             reduce using rule 5 (statement -> function_definition .)
     $end            reduce using rule 5 (statement -> function_definition .)
+    RCURLY          reduce using rule 5 (statement -> function_definition .)
 
 
 state 6
@@ -371,7 +373,7 @@ state 11
 
 state 12
 
-    (26) function_definition -> MEY . LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> MEY . LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     LCURLY          shift and go to state 32
 
@@ -388,6 +390,7 @@ state 13
     LAMBDA          reduce using rule 2 (statement_list -> statement_list statement .)
     MEY             reduce using rule 2 (statement_list -> statement_list statement .)
     $end            reduce using rule 2 (statement_list -> statement_list statement .)
+    RCURLY          reduce using rule 2 (statement_list -> statement_list statement .)
 
 
 state 14
@@ -402,6 +405,7 @@ state 14
     LAMBDA          reduce using rule 4 (statement -> expression SEMICOLON .)
     MEY             reduce using rule 4 (statement -> expression SEMICOLON .)
     $end            reduce using rule 4 (statement -> expression SEMICOLON .)
+    RCURLY          reduce using rule 4 (statement -> expression SEMICOLON .)
 
 
 state 15
@@ -960,7 +964,7 @@ state 31
 
 state 32
 
-    (26) function_definition -> MEY LCURLY . IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> MEY LCURLY . IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     IDENTIFIER      shift and go to state 50
 
@@ -1675,7 +1679,7 @@ state 49
 
 state 50
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER . COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> MEY LCURLY IDENTIFIER . COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     COMMA           shift and go to state 54
 
@@ -1773,7 +1777,7 @@ state 53
 
 state 54
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA . LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA . LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     LPAREN          shift and go to state 57
 
@@ -1820,7 +1824,7 @@ state 56
 
 state 57
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN . arg_list RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN . arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
     (27) arg_list -> . IDENTIFIER
     (28) arg_list -> . IDENTIFIER COMMA arg_list
 
@@ -1861,7 +1865,7 @@ state 59
 
 state 60
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list . RPAREN RCURLY expression SEMICOLON
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list . RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     RPAREN          shift and go to state 62
 
@@ -1878,7 +1882,7 @@ state 61
 
 state 62
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN . RCURLY expression SEMICOLON
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN . RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     RCURLY          shift and go to state 64
 
@@ -1892,7 +1896,18 @@ state 63
 
 state 64
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY . expression SEMICOLON
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY . LCURLY statement_list RCURLY SEMICOLON
+
+    LCURLY          shift and go to state 65
+
+
+state 65
+
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY . statement_list RCURLY SEMICOLON
+    (2) statement_list -> . statement_list statement
+    (3) statement_list -> . statement
+    (4) statement -> . expression SEMICOLON
+    (5) statement -> . function_definition
     (6) expression -> . expression PLUS expression
     (7) expression -> . expression MINUS expression
     (8) expression -> . expression MULTIPLY expression
@@ -1913,6 +1928,7 @@ state 64
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
     (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
+    (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -1920,52 +1936,72 @@ state 64
     BOOLEAN         shift and go to state 9
     IDENTIFIER      shift and go to state 10
     LAMBDA          shift and go to state 11
+    MEY             shift and go to state 12
 
-    expression                     shift and go to state 65
-
-state 65
-
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression . SEMICOLON
-    (6) expression -> expression . PLUS expression
-    (7) expression -> expression . MINUS expression
-    (8) expression -> expression . MULTIPLY expression
-    (9) expression -> expression . DIVIDE expression
-    (10) expression -> expression . MODULO expression
-    (11) expression -> expression . AND expression
-    (12) expression -> expression . OR expression
-    (13) expression -> expression . NOTEQUAL expression
-    (14) expression -> expression . EQUAL expression
-    (15) expression -> expression . GREATER expression
-    (16) expression -> expression . LESS expression
-    (17) expression -> expression . GREATEREQUAL expression
-    (18) expression -> expression . LESSEQUAL expression
-
-    SEMICOLON       shift and go to state 66
-    PLUS            shift and go to state 15
-    MINUS           shift and go to state 16
-    MULTIPLY        shift and go to state 17
-    DIVIDE          shift and go to state 18
-    MODULO          shift and go to state 19
-    AND             shift and go to state 20
-    OR              shift and go to state 21
-    NOTEQUAL        shift and go to state 22
-    EQUAL           shift and go to state 23
-    GREATER         shift and go to state 24
-    LESS            shift and go to state 25
-    GREATEREQUAL    shift and go to state 26
-    LESSEQUAL       shift and go to state 27
-
+    statement_list                 shift and go to state 66
+    statement                      shift and go to state 3
+    expression                     shift and go to state 4
+    function_definition            shift and go to state 5
 
 state 66
 
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list . RCURLY SEMICOLON
+    (2) statement_list -> statement_list . statement
+    (4) statement -> . expression SEMICOLON
+    (5) statement -> . function_definition
+    (6) expression -> . expression PLUS expression
+    (7) expression -> . expression MINUS expression
+    (8) expression -> . expression MULTIPLY expression
+    (9) expression -> . expression DIVIDE expression
+    (10) expression -> . expression MODULO expression
+    (11) expression -> . expression AND expression
+    (12) expression -> . expression OR expression
+    (13) expression -> . expression NOTEQUAL expression
+    (14) expression -> . expression EQUAL expression
+    (15) expression -> . expression GREATER expression
+    (16) expression -> . expression LESS expression
+    (17) expression -> . expression GREATEREQUAL expression
+    (18) expression -> . expression LESSEQUAL expression
+    (19) expression -> . NOT expression
+    (20) expression -> . LPAREN expression RPAREN
+    (21) expression -> . NUMBER
+    (22) expression -> . BOOLEAN
+    (23) expression -> . IDENTIFIER
+    (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
+    (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON
 
-    NOT             reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    LPAREN          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    NUMBER          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    BOOLEAN         reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    IDENTIFIER      reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    LAMBDA          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    MEY             reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
-    $end            reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
+    RCURLY          shift and go to state 67
+    NOT             shift and go to state 6
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 8
+    BOOLEAN         shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    LAMBDA          shift and go to state 11
+    MEY             shift and go to state 12
+
+    statement                      shift and go to state 13
+    expression                     shift and go to state 4
+    function_definition            shift and go to state 5
+
+state 67
+
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY . SEMICOLON
+
+    SEMICOLON       shift and go to state 68
+
+
+state 68
+
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .
+
+    NOT             reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    LPAREN          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    NUMBER          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    BOOLEAN         reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    IDENTIFIER      reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    LAMBDA          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    MEY             reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    $end            reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
+    RCURLY          reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON .)
 
