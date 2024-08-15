@@ -69,8 +69,9 @@ class Interpreter:
 # Test the interpreter
 interpreter = Interpreter()
 # ast = parser.parse('!true;')
-ast = parser.parse('(3 + 5) * 2; !true; !false;')
+# ast = parser.parse('-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;')
 # '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
 # ast = parser.parse('mey {factorial, (n,)} (n == 0) || (n * factorial(n - 1)); factorial(5);')
+ast = parser.parse('mey {addOne, (n)} n + 1; addOne(6);', debug=True)
 result = interpreter.eval(ast)
 # print(result)

@@ -37,7 +37,8 @@ def p_statement_list(p):
 
 def p_statement(p):
     '''statement : expression SEMICOLON
-                 | function_definition'''
+                 | function_definition
+                 | expression_function_call SEMICOLON'''
     p[0] = p[1]
 
 
@@ -49,13 +50,16 @@ def p_expression_binop(p):
                   | expression MODULO expression
                   | expression AND expression
                   | expression OR expression
-                  | expression EQUAL expression
                   | expression NOTEQUAL expression
+                  | expression EQUAL expression
                   | expression GREATER expression
                   | expression LESS expression
                   | expression GREATEREQUAL expression
                   | expression LESSEQUAL expression'''
-    p[0] = ('binop', p[2], p[1], p[3])
+    if len(p) == 2:
+        p[0] = p[1]
+    else:
+        p[0] = ('binop', p[2], p[1], p[3])
 
 
 def p_expression_not(p):
@@ -98,17 +102,21 @@ def p_function_definition(p):
 
 def p_arg_list(p):
     '''arg_list : IDENTIFIER
-                | IDENTIFIER COMMA arg_list'''
-    if len(p) == 2:
+                | IDENTIFIER COMMA arg_list
+                | NUMBER'''
+    if len(p) == 1:
         p[0] = p[1]
     else:
-        p[0] = [p[1]] + p[3]
+        p[0] = p[1] + p[3]
 
 
 def p_expression_function_call(p):
-    '''expression : IDENTIFIER LPAREN arg_list RPAREN'''
+    '''expression_function_call : IDENTIFIER LPAREN arg_list RPAREN'''
     p[0] = ('call', p[1], p[3])
 
+def p_expression_empty(p):
+    '''empty : '''
+    p[0] = None
 
 def p_error(p):
     print(f"Syntax error at '{p.value}'")

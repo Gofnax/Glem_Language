@@ -2,11 +2,11 @@ import ply.lex as lex
 
 # List of token names
 tokens = (
-    'NUMBER', 'BOOLEAN', 'IDENTIFIER',
+    'MEY', 'NUMBER', 'BOOLEAN', 'IDENTIFIER',
     'PLUS', 'MINUS', 'MULTIPLY', 'DIVIDE', 'MODULO',
     'AND', 'OR', 'NOT',
     'EQUAL', 'NOTEQUAL', 'GREATER', 'LESS', 'GREATEREQUAL', 'LESSEQUAL',
-    'LPAREN', 'RPAREN', 'LCURLY', 'RCURLY', 'LAMBDA', 'SEMICOLON', 'MEY',
+    'LCURLY', 'RCURLY', 'LPAREN', 'RPAREN', 'LAMBDA', 'SEMICOLON',
     'COMMA'
 )
 
@@ -25,19 +25,18 @@ t_GREATER = r'>'
 t_LESS = r'<'
 t_GREATEREQUAL = r'>='
 t_LESSEQUAL = r'<='
-t_LPAREN = r'\('
-t_RPAREN = r'\)'
 t_LCURLY = r'\{'
 t_RCURLY = r'\}'
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
 t_LAMBDA = r'Lambda'
 t_SEMICOLON = r';'
 t_COMMA = r','
 
-# Define rules for keywords
-t_MEY = r'mey'
-
-
 # Regular expressions with some action
+def t_MEY(t):
+    r'mey'
+    return t
 def t_NUMBER(t):
     r'-?\d+'
     t.value = int(t.value)
