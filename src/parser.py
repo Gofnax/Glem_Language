@@ -37,8 +37,7 @@ def p_statement_list(p):
 
 def p_statement(p):
     '''statement : expression SEMICOLON
-                 | function_definition
-                 | expression_function_call SEMICOLON'''
+                 | function_definition'''
     p[0] = p[1]
 
 
@@ -84,7 +83,12 @@ def p_expression_boolean(p):
 
 def p_expression_identifier(p):
     '''expression : IDENTIFIER'''
-    p[0] = ('identifier', p[1])
+    p[0] = ('identifier', names[p[1]])
+
+
+def p_expression_function_call(p):
+    '''expression : IDENTIFIER LPAREN param_list RPAREN'''
+    p[0] = ('call', p[1], p[3], functions[p[1]])
 
 
 def p_expression_lambda(p):
@@ -97,26 +101,28 @@ def p_function_definition(p):
     func_name = p[3]
     args = p[6]
     body = p[9]
-    functions[func_name] = ('function', args, body)
+    functions[func_name] = (args, body)
+    p[0] = ('function', func_name)
 
 
 def p_arg_list(p):
     '''arg_list : IDENTIFIER
-                | IDENTIFIER COMMA arg_list
-                | NUMBER'''
-    if len(p) == 1:
-        p[0] = p[1]
+                | IDENTIFIER COMMA arg_list'''
+    if len(p) == 2:
+        p[0] = [p[1]]
+        names[p[1]] = p[1]
     else:
-        p[0] = p[1] + p[3]
+        p[0] = [p[1]] + p[3]
 
 
-def p_expression_function_call(p):
-    '''expression_function_call : IDENTIFIER LPAREN arg_list RPAREN'''
-    p[0] = ('call', p[1], p[3])
+def p_param_list(p):
+    '''param_list : expression
+                  | expression COMMA param_list'''
+    if len(p) == 2:
+        p[0] = [p[1]]
+    else:
+        p[0] = [p[1]] + p[3]
 
-def p_expression_empty(p):
-    '''empty : '''
-    p[0] = None
 
 def p_error(p):
     print(f"Syntax error at '{p.value}'")

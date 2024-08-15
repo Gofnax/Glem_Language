@@ -16,7 +16,7 @@ class Interpreter:
             elif node[0] == 'boolean':
                 return node[1]
             elif node[0] == 'identifier':
-                return env.get(node[1], parser.names.get(node[1]))
+                return env.get(node[1], node[1])
             elif node[0] == 'binop':
                 left = self.eval(node[2], env)
                 right = self.eval(node[3], env)
@@ -25,10 +25,12 @@ class Interpreter:
                 return not self.eval(node[1], env)
             elif node[0] == 'lambda':
                 return lambda x: self.eval(node[2], {**env, node[1]: x})
+            elif node[0] == 'function':
+                return node[1] + " defined."
             elif node[0] == 'call':
                 func_name = node[1]
                 args = node[2]
-                func = parser.functions[func_name]
+                func = node[3]  # parser.functions[func_name]
                 return self.call_function(func, args, env)
         return node
 
@@ -61,7 +63,7 @@ class Interpreter:
             return left <= right
 
     def call_function(self, func, args, env):
-        func_type, func_args, func_body = func
+        func_body, func_args = func[1], func[0]
         local_env = {arg: self.eval(arg_val, env) for arg, arg_val in zip(func_args, args)}
         return self.eval(func_body, {**env, **local_env})
 
@@ -72,6 +74,6 @@ interpreter = Interpreter()
 # ast = parser.parse('-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;')
 # '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
 # ast = parser.parse('mey {factorial, (n,)} (n == 0) || (n * factorial(n - 1)); factorial(5);')
-ast = parser.parse('mey {addOne, (n)} n + 1; addOne(6);', debug=True)
+ast = parser.parse('mey {addOne, (n)} n * 2; !true; addOne(7);')
 result = interpreter.eval(ast)
 # print(result)
