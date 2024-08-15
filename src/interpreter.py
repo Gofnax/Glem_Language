@@ -10,6 +10,7 @@ class Interpreter:
             if node[0] == 'program':
                 for stmt in node[1]:
                     print(self.eval(stmt, env))
+                return
             elif node[0] == 'number':
                 return node[1]
             elif node[0] == 'boolean':
@@ -68,8 +69,8 @@ class Interpreter:
 # Test the interpreter
 interpreter = Interpreter()
 # ast = parser.parse('!true;')
-ast = parser.parse('3 + 5 * 2; !true; !false;')
+ast = parser.parse('(3 + 5) * 2; !true; !false;')
 # '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
 # ast = parser.parse('mey {factorial, (n,)} (n == 0) || (n * factorial(n - 1)); factorial(5);')
 result = interpreter.eval(ast)
-print(result)
+# print(result)
