@@ -27,7 +27,7 @@ Rule 21    expression -> NUMBER
 Rule 22    expression -> BOOLEAN
 Rule 23    expression -> IDENTIFIER
 Rule 24    expression -> IDENTIFIER LPAREN param_list RPAREN
-Rule 25    expression -> LAMBDA IDENTIFIER . expression
+Rule 25    expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 Rule 26    function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
 Rule 27    arg_list -> IDENTIFIER
 Rule 28    arg_list -> IDENTIFIER COMMA arg_list
@@ -36,11 +36,11 @@ Rule 30    param_list -> expression COMMA param_list
 
 Terminals, with rules where they appear
 
-.                    : 25
 AND                  : 11
 BOOLEAN              : 22
 COMMA                : 26 28 30
 DIVIDE               : 9
+DOT                  : 25
 EQUAL                : 14
 GREATER              : 15
 GREATEREQUAL         : 17
@@ -49,7 +49,7 @@ LAMBDA               : 25
 LCURLY               : 26
 LESS                 : 16
 LESSEQUAL            : 18
-LPAREN               : 20 24 26
+LPAREN               : 20 24 25 26
 MEY                  : 26
 MINUS                : 7
 MODULO               : 10
@@ -60,7 +60,7 @@ NUMBER               : 21
 OR                   : 12
 PLUS                 : 6
 RCURLY               : 26
-RPAREN               : 20 24 26
+RPAREN               : 20 24 25 26
 SEMICOLON            : 4 26
 error                : 
 
@@ -103,7 +103,7 @@ state 0
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
     (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
 
     NOT             shift and go to state 6
@@ -151,7 +151,7 @@ state 2
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
     (26) function_definition -> . MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON
 
     $end            reduce using rule 1 (program -> statement_list .)
@@ -250,7 +250,7 @@ state 6
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -283,7 +283,7 @@ state 7
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -364,7 +364,7 @@ state 10
 
 state 11
 
-    (25) expression -> LAMBDA . IDENTIFIER . expression
+    (25) expression -> LAMBDA . IDENTIFIER DOT LPAREN expression RPAREN
 
     IDENTIFIER      shift and go to state 31
 
@@ -426,7 +426,7 @@ state 15
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -459,7 +459,7 @@ state 16
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -492,7 +492,7 @@ state 17
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -525,7 +525,7 @@ state 18
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -558,7 +558,7 @@ state 19
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -591,7 +591,7 @@ state 20
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -624,7 +624,7 @@ state 21
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -657,7 +657,7 @@ state 22
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -690,7 +690,7 @@ state 23
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -723,7 +723,7 @@ state 24
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -756,7 +756,7 @@ state 25
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -789,7 +789,7 @@ state 26
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -822,7 +822,7 @@ state 27
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -939,7 +939,7 @@ state 30
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -953,9 +953,9 @@ state 30
 
 state 31
 
-    (25) expression -> LAMBDA IDENTIFIER . . expression
+    (25) expression -> LAMBDA IDENTIFIER . DOT LPAREN expression RPAREN
 
-    .               shift and go to state 49
+    DOT             shift and go to state 49
 
 
 state 32
@@ -1330,6 +1330,10 @@ state 40
     OR              reduce using rule 13 (expression -> expression NOTEQUAL expression .)
     NOTEQUAL        reduce using rule 13 (expression -> expression NOTEQUAL expression .)
     EQUAL           reduce using rule 13 (expression -> expression NOTEQUAL expression .)
+    GREATER         reduce using rule 13 (expression -> expression NOTEQUAL expression .)
+    LESS            reduce using rule 13 (expression -> expression NOTEQUAL expression .)
+    GREATEREQUAL    reduce using rule 13 (expression -> expression NOTEQUAL expression .)
+    LESSEQUAL       reduce using rule 13 (expression -> expression NOTEQUAL expression .)
     RPAREN          reduce using rule 13 (expression -> expression NOTEQUAL expression .)
     COMMA           reduce using rule 13 (expression -> expression NOTEQUAL expression .)
     PLUS            shift and go to state 15
@@ -1337,24 +1341,20 @@ state 40
     MULTIPLY        shift and go to state 17
     DIVIDE          shift and go to state 18
     MODULO          shift and go to state 19
-    GREATER         shift and go to state 24
-    LESS            shift and go to state 25
-    GREATEREQUAL    shift and go to state 26
-    LESSEQUAL       shift and go to state 27
 
   ! PLUS            [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
   ! MINUS           [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
   ! MULTIPLY        [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
   ! DIVIDE          [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
   ! MODULO          [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
-  ! GREATER         [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
-  ! LESS            [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
-  ! GREATEREQUAL    [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
-  ! LESSEQUAL       [ reduce using rule 13 (expression -> expression NOTEQUAL expression .) ]
   ! AND             [ shift and go to state 20 ]
   ! OR              [ shift and go to state 21 ]
   ! NOTEQUAL        [ shift and go to state 22 ]
   ! EQUAL           [ shift and go to state 23 ]
+  ! GREATER         [ shift and go to state 24 ]
+  ! LESS            [ shift and go to state 25 ]
+  ! GREATEREQUAL    [ shift and go to state 26 ]
+  ! LESSEQUAL       [ shift and go to state 27 ]
 
 
 state 41
@@ -1379,6 +1379,10 @@ state 41
     OR              reduce using rule 14 (expression -> expression EQUAL expression .)
     NOTEQUAL        reduce using rule 14 (expression -> expression EQUAL expression .)
     EQUAL           reduce using rule 14 (expression -> expression EQUAL expression .)
+    GREATER         reduce using rule 14 (expression -> expression EQUAL expression .)
+    LESS            reduce using rule 14 (expression -> expression EQUAL expression .)
+    GREATEREQUAL    reduce using rule 14 (expression -> expression EQUAL expression .)
+    LESSEQUAL       reduce using rule 14 (expression -> expression EQUAL expression .)
     RPAREN          reduce using rule 14 (expression -> expression EQUAL expression .)
     COMMA           reduce using rule 14 (expression -> expression EQUAL expression .)
     PLUS            shift and go to state 15
@@ -1386,24 +1390,20 @@ state 41
     MULTIPLY        shift and go to state 17
     DIVIDE          shift and go to state 18
     MODULO          shift and go to state 19
-    GREATER         shift and go to state 24
-    LESS            shift and go to state 25
-    GREATEREQUAL    shift and go to state 26
-    LESSEQUAL       shift and go to state 27
 
   ! PLUS            [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
   ! MINUS           [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
   ! MULTIPLY        [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
   ! DIVIDE          [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
   ! MODULO          [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
-  ! GREATER         [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
-  ! LESS            [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
-  ! GREATEREQUAL    [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
-  ! LESSEQUAL       [ reduce using rule 14 (expression -> expression EQUAL expression .) ]
   ! AND             [ shift and go to state 20 ]
   ! OR              [ shift and go to state 21 ]
   ! NOTEQUAL        [ shift and go to state 22 ]
   ! EQUAL           [ shift and go to state 23 ]
+  ! GREATER         [ shift and go to state 24 ]
+  ! LESS            [ shift and go to state 25 ]
+  ! GREATEREQUAL    [ shift and go to state 26 ]
+  ! LESSEQUAL       [ shift and go to state 27 ]
 
 
 state 42
@@ -1668,36 +1668,10 @@ state 48
 
 state 49
 
-    (25) expression -> LAMBDA IDENTIFIER . . expression
-    (6) expression -> . expression PLUS expression
-    (7) expression -> . expression MINUS expression
-    (8) expression -> . expression MULTIPLY expression
-    (9) expression -> . expression DIVIDE expression
-    (10) expression -> . expression MODULO expression
-    (11) expression -> . expression AND expression
-    (12) expression -> . expression OR expression
-    (13) expression -> . expression NOTEQUAL expression
-    (14) expression -> . expression EQUAL expression
-    (15) expression -> . expression GREATER expression
-    (16) expression -> . expression LESS expression
-    (17) expression -> . expression GREATEREQUAL expression
-    (18) expression -> . expression LESSEQUAL expression
-    (19) expression -> . NOT expression
-    (20) expression -> . LPAREN expression RPAREN
-    (21) expression -> . NUMBER
-    (22) expression -> . BOOLEAN
-    (23) expression -> . IDENTIFIER
-    (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> LAMBDA IDENTIFIER DOT . LPAREN expression RPAREN
 
-    NOT             shift and go to state 6
-    LPAREN          shift and go to state 7
-    NUMBER          shift and go to state 8
-    BOOLEAN         shift and go to state 9
-    IDENTIFIER      shift and go to state 10
-    LAMBDA          shift and go to state 11
+    LPAREN          shift and go to state 53
 
-    expression                     shift and go to state 53
 
 state 50
 
@@ -1752,7 +1726,7 @@ state 52
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -1766,7 +1740,54 @@ state 52
 
 state 53
 
-    (25) expression -> LAMBDA IDENTIFIER . expression .
+    (25) expression -> LAMBDA IDENTIFIER DOT LPAREN . expression RPAREN
+    (6) expression -> . expression PLUS expression
+    (7) expression -> . expression MINUS expression
+    (8) expression -> . expression MULTIPLY expression
+    (9) expression -> . expression DIVIDE expression
+    (10) expression -> . expression MODULO expression
+    (11) expression -> . expression AND expression
+    (12) expression -> . expression OR expression
+    (13) expression -> . expression NOTEQUAL expression
+    (14) expression -> . expression EQUAL expression
+    (15) expression -> . expression GREATER expression
+    (16) expression -> . expression LESS expression
+    (17) expression -> . expression GREATEREQUAL expression
+    (18) expression -> . expression LESSEQUAL expression
+    (19) expression -> . NOT expression
+    (20) expression -> . LPAREN expression RPAREN
+    (21) expression -> . NUMBER
+    (22) expression -> . BOOLEAN
+    (23) expression -> . IDENTIFIER
+    (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
+
+    NOT             shift and go to state 6
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 8
+    BOOLEAN         shift and go to state 9
+    IDENTIFIER      shift and go to state 10
+    LAMBDA          shift and go to state 11
+
+    expression                     shift and go to state 56
+
+state 54
+
+    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA . LPAREN arg_list RPAREN RCURLY expression SEMICOLON
+
+    LPAREN          shift and go to state 57
+
+
+state 55
+
+    (30) param_list -> expression COMMA param_list .
+
+    RPAREN          reduce using rule 30 (param_list -> expression COMMA param_list .)
+
+
+state 56
+
+    (25) expression -> LAMBDA IDENTIFIER DOT LPAREN expression . RPAREN
     (6) expression -> expression . PLUS expression
     (7) expression -> expression . MINUS expression
     (8) expression -> expression . MULTIPLY expression
@@ -1781,22 +1802,7 @@ state 53
     (17) expression -> expression . GREATEREQUAL expression
     (18) expression -> expression . LESSEQUAL expression
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for MULTIPLY resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for MODULO resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for NOTEQUAL resolved as shift
-  ! shift/reduce conflict for EQUAL resolved as shift
-  ! shift/reduce conflict for GREATER resolved as shift
-  ! shift/reduce conflict for LESS resolved as shift
-  ! shift/reduce conflict for GREATEREQUAL resolved as shift
-  ! shift/reduce conflict for LESSEQUAL resolved as shift
-    SEMICOLON       reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .)
-    RPAREN          reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .)
-    COMMA           reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .)
+    RPAREN          shift and go to state 58
     PLUS            shift and go to state 15
     MINUS           shift and go to state 16
     MULTIPLY        shift and go to state 17
@@ -1811,86 +1817,80 @@ state 53
     GREATEREQUAL    shift and go to state 26
     LESSEQUAL       shift and go to state 27
 
-  ! PLUS            [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! MINUS           [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! MULTIPLY        [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! DIVIDE          [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! MODULO          [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! AND             [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! OR              [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! NOTEQUAL        [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! EQUAL           [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! GREATER         [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! LESS            [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! GREATEREQUAL    [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
-  ! LESSEQUAL       [ reduce using rule 25 (expression -> LAMBDA IDENTIFIER . expression .) ]
 
-
-state 54
-
-    (26) function_definition -> MEY LCURLY IDENTIFIER COMMA . LPAREN arg_list RPAREN RCURLY expression SEMICOLON
-
-    LPAREN          shift and go to state 56
-
-
-state 55
-
-    (30) param_list -> expression COMMA param_list .
-
-    RPAREN          reduce using rule 30 (param_list -> expression COMMA param_list .)
-
-
-state 56
+state 57
 
     (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN . arg_list RPAREN RCURLY expression SEMICOLON
     (27) arg_list -> . IDENTIFIER
     (28) arg_list -> . IDENTIFIER COMMA arg_list
 
-    IDENTIFIER      shift and go to state 57
+    IDENTIFIER      shift and go to state 59
 
-    arg_list                       shift and go to state 58
+    arg_list                       shift and go to state 60
 
-state 57
+state 58
+
+    (25) expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .
+
+    SEMICOLON       reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    PLUS            reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    MINUS           reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    MULTIPLY        reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    MODULO          reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    AND             reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    OR              reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    NOTEQUAL        reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    GREATER         reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    LESS            reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    GREATEREQUAL    reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    LESSEQUAL       reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+    COMMA           reduce using rule 25 (expression -> LAMBDA IDENTIFIER DOT LPAREN expression RPAREN .)
+
+
+state 59
 
     (27) arg_list -> IDENTIFIER .
     (28) arg_list -> IDENTIFIER . COMMA arg_list
 
     RPAREN          reduce using rule 27 (arg_list -> IDENTIFIER .)
-    COMMA           shift and go to state 59
+    COMMA           shift and go to state 61
 
 
-state 58
+state 60
 
     (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list . RPAREN RCURLY expression SEMICOLON
 
-    RPAREN          shift and go to state 60
+    RPAREN          shift and go to state 62
 
 
-state 59
+state 61
 
     (28) arg_list -> IDENTIFIER COMMA . arg_list
     (27) arg_list -> . IDENTIFIER
     (28) arg_list -> . IDENTIFIER COMMA arg_list
 
-    IDENTIFIER      shift and go to state 57
+    IDENTIFIER      shift and go to state 59
 
-    arg_list                       shift and go to state 61
+    arg_list                       shift and go to state 63
 
-state 60
+state 62
 
     (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN . RCURLY expression SEMICOLON
 
-    RCURLY          shift and go to state 62
+    RCURLY          shift and go to state 64
 
 
-state 61
+state 63
 
     (28) arg_list -> IDENTIFIER COMMA arg_list .
 
     RPAREN          reduce using rule 28 (arg_list -> IDENTIFIER COMMA arg_list .)
 
 
-state 62
+state 64
 
     (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY . expression SEMICOLON
     (6) expression -> . expression PLUS expression
@@ -1912,7 +1912,7 @@ state 62
     (22) expression -> . BOOLEAN
     (23) expression -> . IDENTIFIER
     (24) expression -> . IDENTIFIER LPAREN param_list RPAREN
-    (25) expression -> . LAMBDA IDENTIFIER . expression
+    (25) expression -> . LAMBDA IDENTIFIER DOT LPAREN expression RPAREN
 
     NOT             shift and go to state 6
     LPAREN          shift and go to state 7
@@ -1921,9 +1921,9 @@ state 62
     IDENTIFIER      shift and go to state 10
     LAMBDA          shift and go to state 11
 
-    expression                     shift and go to state 63
+    expression                     shift and go to state 65
 
-state 63
+state 65
 
     (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression . SEMICOLON
     (6) expression -> expression . PLUS expression
@@ -1940,7 +1940,7 @@ state 63
     (17) expression -> expression . GREATEREQUAL expression
     (18) expression -> expression . LESSEQUAL expression
 
-    SEMICOLON       shift and go to state 64
+    SEMICOLON       shift and go to state 66
     PLUS            shift and go to state 15
     MINUS           shift and go to state 16
     MULTIPLY        shift and go to state 17
@@ -1956,7 +1956,7 @@ state 63
     LESSEQUAL       shift and go to state 27
 
 
-state 64
+state 66
 
     (26) function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .
 
@@ -1969,19 +1969,3 @@ state 64
     MEY             reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
     $end            reduce using rule 26 (function_definition -> MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON .)
 
-WARNING: 
-WARNING: Conflicts:
-WARNING: 
-WARNING: shift/reduce conflict for PLUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 53 resolved as shift
-WARNING: shift/reduce conflict for MULTIPLY in state 53 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 53 resolved as shift
-WARNING: shift/reduce conflict for MODULO in state 53 resolved as shift
-WARNING: shift/reduce conflict for AND in state 53 resolved as shift
-WARNING: shift/reduce conflict for OR in state 53 resolved as shift
-WARNING: shift/reduce conflict for NOTEQUAL in state 53 resolved as shift
-WARNING: shift/reduce conflict for EQUAL in state 53 resolved as shift
-WARNING: shift/reduce conflict for GREATER in state 53 resolved as shift
-WARNING: shift/reduce conflict for LESS in state 53 resolved as shift
-WARNING: shift/reduce conflict for GREATEREQUAL in state 53 resolved as shift
-WARNING: shift/reduce conflict for LESSEQUAL in state 53 resolved as shift

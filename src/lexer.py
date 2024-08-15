@@ -7,7 +7,7 @@ tokens = (
     'AND', 'OR', 'NOT',
     'EQUAL', 'NOTEQUAL', 'GREATER', 'LESS', 'GREATEREQUAL', 'LESSEQUAL',
     'LCURLY', 'RCURLY', 'LPAREN', 'RPAREN', 'LAMBDA', 'SEMICOLON',
-    'COMMA'
+    'COMMA', 'DOT'
 )
 
 # Regular expressions for tokens
@@ -32,6 +32,7 @@ t_RPAREN = r'\)'
 t_LAMBDA = r'Lambda'
 t_SEMICOLON = r';'
 t_COMMA = r','
+t_DOT = r'.'
 
 # Regular expressions with some action
 def t_MEY(t):

@@ -92,8 +92,9 @@ def p_expression_function_call(p):
 
 
 def p_expression_lambda(p):
-    '''expression : LAMBDA IDENTIFIER '.' expression'''
-    p[0] = ('lambda', p[2], p[4])
+    '''expression : LAMBDA IDENTIFIER DOT LPAREN expression RPAREN'''
+    names[p[2]] = p[2]
+    p[0] = ('lambda', p[2], p[5])
 
 
 def p_function_definition(p):
