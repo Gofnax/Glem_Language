@@ -98,7 +98,6 @@ def p_expression_lambda(p):
 
 
 def p_function_definition(p):
-    # '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY expression SEMICOLON'''
     '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY statement_list RCURLY SEMICOLON'''
     func_name = p[3]
     args = p[6]
