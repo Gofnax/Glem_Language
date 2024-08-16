@@ -44,7 +44,7 @@ def t_NUMBER(t):
     return t
 
 def t_LAMBDA(t):
-    r'Lambda'
+    r'lambda'
     return t
 
 def t_BOOLEAN(t):

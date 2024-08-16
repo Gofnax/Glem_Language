@@ -81,7 +81,9 @@ def p_expression_boolean(p):
 
 def p_expression_identifier(p):
     '''expression : IDENTIFIER'''
-    p[0] = ('identifier', GlemParser.names[p[1]])
+    if p[1] not in GlemParser.names:
+        GlemParser.names[p[1]] = None
+    p[0] = ('identifier', p[1])
 
 
 def p_expression_function_call(p):
@@ -95,7 +97,7 @@ def p_expression_function_call(p):
 
 def p_expression_lambda(p):
     '''expression : LAMBDA IDENTIFIER DOT LPAREN expression RPAREN'''
-    GlemParser.names[p[2]] = p[2]
+    GlemParser.names[p[2]] = None
     p[0] = ('lambda', p[2], p[5])
 
 
