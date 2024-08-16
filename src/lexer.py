@@ -29,7 +29,7 @@ t_LCURLY = r'\{'
 t_RCURLY = r'\}'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_LAMBDA = r'Lambda'
+# t_LAMBDA = r'Lambda'
 t_SEMICOLON = r';'
 t_COMMA = r','
 t_DOT = r'.'
@@ -43,6 +43,9 @@ def t_NUMBER(t):
     t.value = int(t.value)
     return t
 
+def t_LAMBDA(t):
+    r'Lambda'
+    return t
 
 def t_BOOLEAN(t):
     r'true|false'
