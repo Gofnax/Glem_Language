@@ -10,15 +10,13 @@ precedence = (
     ('right', 'NOT'),
 )
 
-# Dictionary to store function definitions
-functions = {}
+class GlemParser:
 
-# Dictionary to store the AST
-names = {}
+    # Dictionary to store function definitions
+    functions = {}
 
-# Define the start rule
-# start = 'program'
-
+    # Dictionary to store the AST
+    names = {}
 
 # Grammar rules
 def p_program(p):
@@ -83,17 +81,21 @@ def p_expression_boolean(p):
 
 def p_expression_identifier(p):
     '''expression : IDENTIFIER'''
-    p[0] = ('identifier', names[p[1]])
+    p[0] = ('identifier', GlemParser.names[p[1]])
 
 
 def p_expression_function_call(p):
     '''expression : IDENTIFIER LPAREN param_list RPAREN'''
-    p[0] = ('call', p[1], p[3], functions[p[1]])
+    func_name = p[1]
+    if GlemParser.functions.get(func_name) is None:
+        GlemParser.functions[func_name] = ()
+
+    p[0] = ('call', p[1], p[3])
 
 
 def p_expression_lambda(p):
     '''expression : LAMBDA IDENTIFIER DOT LPAREN expression RPAREN'''
-    names[p[2]] = p[2]
+    GlemParser.names[p[2]] = p[2]
     p[0] = ('lambda', p[2], p[5])
 
 
@@ -102,14 +104,14 @@ def p_function_definition(p):
     func_name = p[3]
     args = p[6]
     body = p[10]
-    functions[func_name] = (args, body)
+    GlemParser.functions[func_name] = (args, body)
     p[0] = ('function', func_name)
 
 
 def p_arg_list(p):
     '''arg_list : IDENTIFIER
                 | IDENTIFIER COMMA arg_list'''
-    names[p[1]] = p[1]
+    GlemParser.names[p[1]] = p[1]
     if len(p) == 2:
         p[0] = [p[1]]
     else:

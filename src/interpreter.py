@@ -1,4 +1,5 @@
 from parser import parser
+from parser import GlemParser
 
 
 class Interpreter:
@@ -20,6 +21,10 @@ class Interpreter:
                 return env.get(node[1], node[1])
             elif node[0] == 'binop':
                 left = self.eval(node[2], env)
+                if left is True and node[1] == '||':
+                    return True
+                elif left is False and node[1] == '&&':
+                    return False
                 right = self.eval(node[3], env)
                 return self.apply_binop(node[1], left, right)
             elif node[0] == 'not':
@@ -31,7 +36,7 @@ class Interpreter:
             elif node[0] == 'call':
                 func_name = node[1]
                 args = node[2]
-                func = node[3]  # parser.functions[func_name]
+                func = GlemParser.functions[func_name]
                 return self.call_function(func, args, env)
         return node
 
@@ -76,10 +81,10 @@ class Interpreter:
 interpreter = Interpreter()
 # ast = parser.parse('!true;')
 # ast = parser.parse('-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;')
-# '''function_definition : MEY LCURLY IDENTIFIER COMMA LPAREN arg_list RPAREN RCURLY LCURLY expression SEMICOLON RCURLY SEMICOLON'''
-# ast = parser.parse('mey {factorial, (n)} (n == 0) || (n * factorial(n - 1)); true; factorial(5);')
+ast = parser.parse('mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));}; true; factorial(5);')
 # ast = parser.parse('mey {addOne, (n, m)} {n * 2; m + 3; !true; n - 2 * 3;}; addOne(9 + 1, 200);')
-ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {addTwo, (n)} {addOne(n) + 1;}; addTwo(3);')
+# ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {addTwo, (n)} {addOne(n) + 1;}; addTwo(3);')
 # ast = parser.parse('Lambda x.(x+1);')
+# ast = parser.parse('(1 == 0) || (2 + 3 + true);')
 result = interpreter.eval(ast)
 # print(result)
