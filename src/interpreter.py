@@ -10,11 +10,14 @@ class Interpreter:
         if isinstance(node, tuple):
             if node[0] == 'program':
                 self.call_stack.append(('program', env))    # Pushing a starting stack frame
+                result = None
                 for stmt in node[1]:
-                    eval_string = str(self.eval(stmt, env))
-                    print(eval_string)
-                self.call_stack.pop()   # After the program finishes, we pop the first stack frame
-                return
+                    result = self.eval(stmt, env)
+                    if not callable(result):    # Only print the result if it's not a lambda function
+                        eval_string = str(result)
+                        print(eval_string)
+                self.call_stack.pop()  # After the program finishes, we pop the first stack frame
+                return result  # Return the result of the last evaluated statement
             elif node[0] == 'number':
                 return node[1]
             elif node[0] == 'boolean':
