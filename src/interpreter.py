@@ -35,7 +35,8 @@ class Interpreter:
             elif node[0] == 'not':
                 return not self.eval(node[1], env)
             elif node[0] == 'lambda':
-                return lambda x: self.eval(node[2], {**env, node[1]: x})
+                res = lambda x: self.eval(node[2], {**env, node[1]: x})
+                return res
             elif node[0] == 'function':
                 return node[1] + " defined."
             elif node[0] == 'call':
@@ -90,10 +91,10 @@ interpreter = Interpreter()
 # ast = parser.parse('!true;')
 # ast = parser.parse('-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;')
 # ast = parser.parse('mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));}; true; factorial(5);')
-# ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {loop, (n, m)} {(n == 0) || (addOne(m) && loop(n - 1, m));}; loop(5, 3);')
+# ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {loop, (count, total, cond)} {(cond && loop(count - 1, addOne(total), count - 1 > 0)) || ((1 - cond) && total);}; loop(5, 10, true);')
 # ast = parser.parse('mey {addOne, (n, m)} {n * 2; m + 3; !true; n - 2 * 3;}; addOne(9 + 1, 200);')
 # ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {addTwo, (n)} {addOne(n) + 1;}; addTwo(3);')
-ast = parser.parse('lambda x.(x+1);')
+ast = parser.parse('lambda x.(lambda y.(y+1));')
 print(ast)
 # ast = parser.parse('(1 == 0) || (2 + 3 + true);')
 result = interpreter.eval(ast)
