@@ -60,7 +60,7 @@ def t_IDENTIFIER(t):
 
 # Ignore whitespace and comments
 t_ignore = ' \t'
-t_ignore_COMMENT = r'\#.*'
+t_ignore_COMMENT = r'\#[a-zA-Z0-9 ]*\#'
 
 
 # Error handling rule
