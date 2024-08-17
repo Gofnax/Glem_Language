@@ -1,0 +1,1 @@
+mey {addOne, (n)} {n + 1;}; mey {addTwo, (n)} {addOne(n) + 1;}; addTwo(3);
