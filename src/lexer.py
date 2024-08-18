@@ -58,8 +58,8 @@ def t_IDENTIFIER(t):
     return t
 
 
-# Ignore whitespace and comments
-t_ignore = ' \t'
+# Ignore whitespace, new line and comments
+t_ignore = ' \t \n'
 t_ignore_COMMENT = r'\#[a-zA-Z0-9 ]*\#'
 
 
