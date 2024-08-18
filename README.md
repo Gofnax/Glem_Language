@@ -9,7 +9,8 @@
 <summary> Documentation </summary>
 
 **Data Types:**<br>
-In Glem we support the usage of integers and boolean values.<br/>
+In Glem we support the usage of integers and boolean values,<br>
+where all the values are immutable, and there are no variable assignments.<br>
 With this, you can use basic arithmetic operations:
 * Addition (+)
 * Subtraction (-)
@@ -30,6 +31,7 @@ As such, you can also use comparison operations:
 * Greater than or equal to (>=)
 * Less than or equal to (<=)
 
+**Basic Usage:**<br>
 The basic way to make use of Glem is to write one-line expressions,<br>
 to which to interpreter will print the result.
 For example:
@@ -41,6 +43,9 @@ true
 >>> 4 * (5 + 2);
 28
 ```
+
+**Functions and Lambda Functions:**<br>
+
 
 
 </details>
