@@ -6,7 +6,7 @@
 <br/>
 
 <details>
-<summary> ## Documentation </summary>
+## <summary> Documentation </summary>
 
 **Data Types:**<br>
 In Glem we support the usage of integers and boolean values.<br/>
