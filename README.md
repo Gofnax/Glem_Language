@@ -5,10 +5,14 @@
 **Emil Glater - @Gofnax<br/>**
 <br/>
 
+Based on code written in Python, using the PLY module, we implemented<br>
+a lexer, a parser, and an interpreter that allow us define a new<br>
+(small) programming language we call Glem.<br>
+
 <details>
 <summary> Documentation </summary>
 
-**Data Types:**<br>
+***Data Types:***<br>
 In Glem we support the usage of integers and boolean values,<br>
 where all the values are immutable, and there are no variable assignments.<br>
 <br>
@@ -30,7 +34,7 @@ and boolean and comparison operations:
 * Greater than or equal to (>=)
 * Less than or equal to (<=)
 
-**Basic Usage:**<br>
+***Basic Usage:***<br>
 The basic way to make use of Glem is to write one-line expressions,<br>
 for which the interpreter will print the result.
 For example:
@@ -43,7 +47,7 @@ true
 28
 ```
 
-**Functions and Lambda Functions:**<br>
+***Functions:***<br>
 In Glem, you can define functions using the keyword ```mey``` and call them<br>
 anywhere in the code from the point of their definition onwards.<br>
 As Glem doesn't support variable assignment, writing a function that<br>
@@ -76,7 +80,10 @@ values that correspond to its expected values in them:
 4
 ```
 
-
+In addition to regular functions, Glem supports the usage of anonymous<br>
+functions (lambda expressions). These allow you to write code with a higher<br>
+level of complexity than a regular statement, but without the need to define<br>
+a function beforehand.
 </details>
 
 <details>
