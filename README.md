@@ -57,7 +57,7 @@ mey {function_name, (arg1, arg2, ...)}
 ```
 
 For example, let's look at the definition of the function ```addOne``` that<br>
-receives an integer and returned its value increased by 1:<br>
+receives an integer and returns its value increased by 1:<br>
 ```
 mey {addOne, (n)}
 {n + 1;};
