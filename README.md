@@ -11,19 +11,18 @@
 **Data Types:**<br>
 In Glem we support the usage of integers and boolean values,<br>
 where all the values are immutable, and there are no variable assignments.<br>
+<br>
 With this, you can use basic arithmetic operations:
 * Addition (+)
 * Subtraction (-)
 * Multiplication (*)
 * Division (integer division) (/)
 * Modulo (%)
-
-and boolean operations:
+  
+and boolean and comparison operations:
 * AND (&&)
 * OR (||)
 * NOT (!)
-
-As such, you can also use comparison operations:
 * Equality to (==)
 * Not queal to (!=)
 * Greater than (>)
@@ -45,7 +44,23 @@ true
 ```
 
 **Functions and Lambda Functions:**<br>
-
-
+In Glem, you can declare functions using the keyword ```mey``` and call them<br>
+anywhere in the code from the point of their declaration onwards.<br>
+As Glem doesn't support variable assignment, writing a function that<br>
+executes multiple statement won't affect that function's returned value,<br>
+and only the result of the last statement will be returned.<br>
+<br>
+The format of a function declaration is:<br>
+```
+mey {function_name, (arg1, arg2, ...)}
+{statement; statement; ...; statement;};
+```
+<br>
+For example, let's look at the definition of the function ```addOne``` that<br>
+receives an integer and returned its value increased by 1:<br>
+```
+mey {addOne, (n)}
+{n + 1;};
+```
 
 </details>
