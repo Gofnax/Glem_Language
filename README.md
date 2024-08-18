@@ -6,7 +6,7 @@
 <br/>
 
 <details>
-## <summary> Documentation </summary>
+<summary> Documentation </summary>
 
 **Data Types:**<br>
 In Glem we support the usage of integers and boolean values.<br/>
@@ -22,7 +22,25 @@ and boolean operations:
 * OR (||)
 * NOT (!)
 
+As such, you can also use comparison operations:
+* Equality to (==)
+* Not queal to (!=)
+* Greater than (>)
+* Less than (<)
+* Greater than or equal to (>=)
+* Less than or equal to (<=)
 
+The basic way to make use of Glem is to write one-line expressions,<br>
+to which to interpreter will print the result.
+For example:
+```
+>>> 3 + 5;
+8
+>>> 12 >= 4;
+true
+>>> 4 * (5 + 2);
+28
+```
 
 
 </details>
