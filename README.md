@@ -55,7 +55,7 @@ The format of a function declaration is:<br>
 mey {function_name, (arg1, arg2, ...)}
 {statement; statement; ...; statement;};
 ```
-<br>
+
 For example, let's look at the definition of the function ```addOne``` that<br>
 receives an integer and returned its value increased by 1:<br>
 ```
