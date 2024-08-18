@@ -40,6 +40,7 @@ and boolean and comparison operations:
 * Less than (<)
 * Greater than or equal to (>=)
 * Less than or equal to (<=)
+<br>
 
 ***Basic Usage:***<br>
 The basic way to make use of Glem is to write one-line expressions,<br>
@@ -56,6 +57,7 @@ true
 >>> 4 * (5 + 2);
 28
 ```
+<br>
 
 ***Functions:***<br>
 In Glem, you can define functions using the keyword ```mey``` and call them<br>
@@ -103,6 +105,7 @@ Lambda param.(expression)
 Where ```param``` can be switched with any other identifier for the parameter<br>
 the lambda function expects to receive, and any expression can be written inside<br>
 the brackets.<br>
+<br>
 
 ***Comments:***<br>
 Glem allows you to add comments to your code to elevate its readability just like<br>
@@ -113,9 +116,10 @@ For example:
 ...
 3 + 5;  # Example code #
 addThree(13);  # Works like addOne but increase value by 3 #
-5 * 2 + true;
+5 * 2 # You can even put a comment in the middle of a statement # + true;
 ...
 ```
+
 
 </details>
 
