@@ -69,42 +69,42 @@ mey {addOne, (n)}
 <br>
   
 ```
-program ::= statement_list<br>
+program ::= statement_list
 
-statement_list ::= statement_list statement<br>
-                 | statement<br>
+statement_list ::= statement_list statement
+                 | statement
 
-statement ::= expression ";"<br>
-            | function_definition<br>
-            | expression_lambda<br>
+statement ::= expression ";"
+            | function_definition
+            | expression_lambda
 
-expression ::= expression "+" expression<br>
-             | expression "-" expression<br>
-             | expression "*" expression<br>
-             | expression "/" expression<br>
-             | expression "%" expression<br>
-             | expression "&&" expression<br>
-             | expression "||" expression<br>
-             | expression "!=" expression<br>
-             | expression "==" expression<br>
-             | expression ">" expression<br>
-             | expression "<" expression<br>
-             | expression ">=" expression<br>
-             | expression "<=" expression<br>
-             | "!" expression<br>
-             | "(" expression ")"<br>
-             | number<br>
-             | boolean<br>
-             | identifier<br>
-             | identifier "(" param_list ")"<br>
-             | "lambda" identifier "." "(" expression ")"<br>
+expression ::= expression "+" expression
+             | expression "-" expression
+             | expression "*" expression
+             | expression "/" expression
+             | expression "%" expression
+             | expression "&&" expression
+             | expression "||" expression
+             | expression "!=" expression
+             | expression "==" expression
+             | expression ">" expression
+             | expression "<" expression
+             | expression ">=" expression
+             | expression "<=" expression
+             | "!" expression
+             | "(" expression ")"
+             | number
+             | boolean
+             | identifier
+             | identifier "(" param_list ")"
+             | "lambda" identifier "." "(" expression ")"
 
-function_definition ::= "mey" "{" identifier "," "(" arg_list ")" "}" "{" statement_list "}" ";"<br>
+function_definition ::= "mey" "{" identifier "," "(" arg_list ")" "}" "{" statement_list "}" ";"
 
-arg_list ::= identifier<br>
-           | identifier "," arg_list<br>
+arg_list ::= identifier
+           | identifier "," arg_list
 
-param_list ::= expression<br>
-             | expression "," param_list<br>
+param_list ::= expression
+             | expression "," param_list
 ```
 </details>
