@@ -44,13 +44,13 @@ true
 ```
 
 **Functions and Lambda Functions:**<br>
-In Glem, you can declare functions using the keyword ```mey``` and call them<br>
-anywhere in the code from the point of their declaration onwards.<br>
+In Glem, you can define functions using the keyword ```mey``` and call them<br>
+anywhere in the code from the point of their definition onwards.<br>
 As Glem doesn't support variable assignment, writing a function that<br>
 executes multiple statement won't affect that function's returned value,<br>
 and only the result of the last statement will be returned.<br>
 <br>
-The format of a function declaration is:<br>
+The format of a function definition is:<br>
 ```
 mey {function_name, (arg1, arg2, ...)}
 {statement; statement; ...; statement;};
@@ -59,14 +59,30 @@ mey {function_name, (arg1, arg2, ...)}
 For example, let's look at the definition of the function ```addOne``` that<br>
 receives an integer and returns its value increased by 1:<br>
 ```
-mey {addOne, (n)}
-{n + 1;};
+>>> mey {addOne, (n)} {n + 1;};
+addOne defined.
 ```
+
+The format of calling a function is:
+```
+function_name(arg1, arg2, arg3, ...);
+```
+
+Continuing with our example, assuming we defined ```addOne``` earlier in our<br>
+code, to call it we simply need to write its name, followed by brackets with<br>
+values that correspond to its expected values in them:
+```
+>>> addOne(3);
+4
+```
+
+
 </details>
 
 <details>
 <summary>BNF</summary>
 <br>
+The syntax of Glem is as follows:<br>
   
 ```
 program ::= statement_list
