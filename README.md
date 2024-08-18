@@ -5,16 +5,16 @@
 **Emil Glater - @Gofnax<br/>**
 <br/>
 
-Based on code written in Python, using the PLY module, we implemented<br>
-a lexer, a parser, and an interpreter that allow us define a new<br>
-(small) programming language we call Glem.<br>
+Based on code written in Python, using the PLY module, we implemented
+ a lexer, a parser, and an interpreter that allow us define a new
+ (small) programming language we call Glem.<br>
 
 The interpreter can be used in two methods:
-1. Interactive mode (REPL): the user can execute commands one line<br>
-at a time and see the result of each line immediately after execution.<br>
-2. Full program mode: code files in Glem have the .lambda suffix. The<br>
-user can provide the path to a file they wrote a Glem program in, and<br>
-our program reads the code line by line and executes it.<br>
+1. Interactive mode (REPL): the user can execute commands one line
+ at a time and see the result of each line immediately after execution.
+2. Full program mode: code files in Glem have the .lambda suffix. The
+ user can provide the path to a file they wrote a Glem program in, and
+ our program reads the code line by line and executes it.<br>
 
 <details>
 <summary> Documentation </summary>
