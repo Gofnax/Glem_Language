@@ -67,6 +67,7 @@ mey {addOne, (n)}
 <details>
 <summary>BNF</summary>
 <br>
+<pre>
 program ::= statement_list<br>
 
 statement_list ::= statement_list statement<br>
@@ -105,5 +106,5 @@ arg_list ::= identifier<br>
 param_list ::= expression<br>
              | expression "," param_list<br>
 
-
+</pre>
 </details>
