@@ -62,5 +62,46 @@ receives an integer and returns its value increased by 1:<br>
 mey {addOne, (n)}
 {n + 1;};
 ```
+</details>
+
+<details>
+<summary>BNF</summary>
+<program> ::= <statement_list>
+
+<statement_list> ::= <statement_list> <statement>
+                   | <statement>
+
+<statement> ::= <expression> ";"
+              | <function_definition>
+              | <expression_lambda>
+
+<expression> ::= <expression> "+" <expression>
+               | <expression> "-" <expression>
+               | <expression> "*" <expression>
+               | <expression> "/" <expression>
+               | <expression> "%" <expression>
+               | <expression> "&&" <expression>
+               | <expression> "||" <expression>
+               | <expression> "!=" <expression>
+               | <expression> "==" <expression>
+               | <expression> ">" <expression>
+               | <expression> "<" <expression>
+               | <expression> ">=" <expression>
+               | <expression> "<=" <expression>
+               | "!" <expression>
+               | "(" <expression> ")"
+               | <number>
+               | <boolean>
+               | <identifier>
+               | <identifier> "(" <param_list> ")"
+               | "lambda" <identifier> "." "(" <expression> ")"
+
+<function_definition> ::= "mey" "{" <identifier> "," "(" <arg_list> ")" "}" "{" <statement_list> "}" ";"
+
+<arg_list> ::= <identifier>
+             | <identifier> "," <arg_list>
+
+<param_list> ::= <expression>
+               | <expression> "," <param_list>
 
 </details>
