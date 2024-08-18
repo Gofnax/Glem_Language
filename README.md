@@ -5,22 +5,22 @@
 **Emil Glater - @Gofnax<br/>**
 <br/>
 
-Based on code written in Python, using the PLY module, we implemented
- a lexer, a parser, and an interpreter that allow us define a new
- (small) programming language we call Glem.<br>
+Based on code written in Python, using the PLY module, we implemented 
+a lexer, a parser, and an interpreter that allow us define a new 
+(small) programming language we call Glem.<br>
 
 The interpreter can be used in two methods:
-1. Interactive mode (REPL): the user can execute commands one line
- at a time and see the result of each line immediately after execution.
-2. Full program mode: code files in Glem have the .lambda suffix. The
- user can provide the path to a file they wrote a Glem program in, and
- our program reads the code line by line and executes it.<br>
+1. Interactive mode (REPL): the user can execute commands one line 
+at a time and see the result of each line immediately after execution.
+2. Full program mode: code files in Glem have the .lambda suffix. The 
+user can provide the path to a file they wrote a Glem program in, and 
+our program reads the code line by line and executes it.<br>
 
 <details>
 <summary> Documentation </summary>
 
 ***Data Types:***<br>
-In Glem we support the usage of integers and boolean values,<br>
+In Glem we support the usage of integers and boolean values, 
 where all the values are immutable, and there are no variable assignments.<br>
 <br>
 With this, you can use basic arithmetic operations:
@@ -43,10 +43,10 @@ and boolean and comparison operations:
 <br>
 
 ***Basic Usage:***<br>
-The basic way to make use of Glem is to write one-line expressions,<br>
-for which the interpreter will print the result. In addition, you can<br>
-write an expression inside an expression, as shown below. At the end<br>
-of each line, there has to be a ```;``` for the language to recognize<br>
+The basic way to make use of Glem is to write one-line expressions, 
+for which the interpreter will print the result. In addition, you can 
+write an expression inside an expression, as shown below. At the end 
+of each line, there has to be a ```;``` for the language to recognize 
 the expression written as a statement it can execute.<br>
 For example:
 ```
@@ -60,20 +60,20 @@ true
 <br>
 
 ***Functions:***<br>
-In Glem, you can define functions using the keyword ```mey``` and call them<br>
-anywhere in the code from the point of their definition onwards.<br>
-As Glem doesn't support variable assignment, writing a function that<br>
-executes multiple statement won't affect that function's returned value,<br>
+In Glem, you can define functions using the keyword ```mey``` and call them 
+anywhere in the code from the point of their definition onwards. 
+As Glem doesn't support variable assignment, writing a function that 
+executes multiple statement won't affect that function's returned value, 
 and only the result of the last statement will be returned.<br>
 <br>
-The format of a function definition is:<br>
+The format of a function definition is:
 ```
 mey {function_name, (arg1, arg2, ...)}
 {statement; statement; ...; statement;};
 ```
 
-For example, let's look at the definition of the function ```addOne``` that<br>
-receives an integer and returns its value increased by 1:<br>
+For example, let's look at the definition of the function ```addOne``` that 
+receives an integer and returns its value increased by 1:
 ```
 >>> mey {addOne, (n)} {n + 1;};
 addOne defined.
@@ -84,32 +84,33 @@ The format of calling a function is:
 function_name(arg1, arg2, arg3, ...);
 ```
 
-Continuing with our example, assuming we defined ```addOne``` earlier in our<br>
-code, to call it we simply need to write its name, followed by brackets with<br>
+Continuing with our example, assuming we defined ```addOne``` earlier in our 
+code, to call it we simply need to write its name, followed by brackets with 
 values that correspond to its expected values in them:
 ```
 >>> addOne(3);
 4
 ```
+<br>
 
-In addition to regular functions, Glem supports the usage of anonymous<br>
-functions (lambda function/expressions). These allow you to write code with a higher<br>
-level of complexity than a regular statement, but without the need to define<br>
-a function beforehand. For Glem to recognize a lamda function, it has to be defined<br>
+In addition to regular functions, Glem supports the usage of anonymous 
+functions (lambda function/expressions). These allow you to write code with a higher 
+level of complexity than a regular statement, but without the need to define 
+a function beforehand. For Glem to recognize a lamda function, it has to be defined 
 using the ```lambda``` keyword.<br>
 <br>
 The format of a lambda function, as recognized by Glem is:
 ```
 Lambda param.(expression)
 ```
-Where ```param``` can be switched with any other identifier for the parameter<br>
-the lambda function expects to receive, and any expression can be written inside<br>
+Where ```param``` can be switched with any other identifier for the parameter 
+the lambda function expects to receive, and any expression can be written inside 
 the brackets.<br>
 <br>
 
 ***Comments:***<br>
-Glem allows you to add comments to your code to elevate its readability just like<br>
-many other languages. To insert a comment in the code you simply need to wrap it<br>
+Glem allows you to add comments to your code to elevate its readability just like 
+many other languages. To insert a comment in the code you simply need to wrap it 
 with ```#```'s.<br>
 For example:
 ```
