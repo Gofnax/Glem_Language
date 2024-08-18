@@ -9,7 +9,7 @@ Based on code written in Python, using the PLY module, we implemented<br>
 a lexer, a parser, and an interpreter that allow us define a new<br>
 (small) programming language we call Glem.<br>
 
-The interpreter can be used in two methods:<br>
+The interpreter can be used in two methods:
 1. Interactive mode (REPL): the user can execute commands one line<br>
 at a time and see the result of each line immediately after execution.<br>
 2. Full program mode: code files in Glem have the .lambda suffix. The<br>
@@ -43,7 +43,10 @@ and boolean and comparison operations:
 
 ***Basic Usage:***<br>
 The basic way to make use of Glem is to write one-line expressions,<br>
-for which the interpreter will print the result.
+for which the interpreter will print the result. In addition, you can<br>
+write an expression inside an expression, as shown below. At the end<br>
+of each line, there has to be a ```;``` for the language to recognize<br>
+the expression written as a statement it can execute.<br>
 For example:
 ```
 >>> 3 + 5;
@@ -88,9 +91,32 @@ values that correspond to its expected values in them:
 ```
 
 In addition to regular functions, Glem supports the usage of anonymous<br>
-functions (lambda expressions). These allow you to write code with a higher<br>
+functions (lambda function/expressions). These allow you to write code with a higher<br>
 level of complexity than a regular statement, but without the need to define<br>
-a function beforehand.
+a function beforehand. For Glem to recognize a lamda function, it has to be defined<br>
+using the ```lambda``` keyword.<br>
+<br>
+The format of a lambda function, as recognized by Glem is:
+```
+Lambda param.(expression)
+```
+Where ```param``` can be switched with any other identifier for the parameter<br>
+the lambda function expects to receive, and any expression can be written inside<br>
+the brackets.<br>
+
+***Comments:***<br>
+Glem allows you to add comments to your code to elevate its readability just like<br>
+many other languages. To insert a comment in the code you simply need to wrap it<br>
+with ```#```'s.<br>
+For example:
+```
+...
+3 + 5;  # Example code #
+addThree(13);  # Works like addOne but increase value by 3 #
+5 * 2 + true;
+...
+```
+
 </details>
 
 <details>
