@@ -7,7 +7,7 @@
 
 <details>
 <summary>
-## Documentation
+***Documentation***
 </summary>
 
 **Data Types:**<br>
