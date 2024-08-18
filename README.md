@@ -32,7 +32,7 @@ and boolean and comparison operations:
 
 **Basic Usage:**<br>
 The basic way to make use of Glem is to write one-line expressions,<br>
-to which to interpreter will print the result.
+for which the interpreter will print the result.
 For example:
 ```
 >>> 3 + 5;
