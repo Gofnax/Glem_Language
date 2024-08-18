@@ -6,7 +6,6 @@ def run_lambda_program(file_path):
     interpreter = Interpreter()
     with open(file_path, 'r') as file:
         program = file.read()
-
     ast = parser.parse(program)
 
     if ast[0] == 'program':
@@ -36,7 +35,8 @@ def run_interactive_mode():
             while callable(result):
                 user_input = input('> ')
                 t_ast = parser.parse(user_input)
-                result = result(t_ast)
+                temp = interpreter.eval(t_ast)
+                result = result(temp)
             if result is not None:
                 print(result)
         except Exception as e:
