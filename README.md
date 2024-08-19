@@ -123,7 +123,7 @@ the lambda function expects to receive, and any expression can be written inside
 the brackets.<br>
 <br>
 
-***Calling Functions from other Functions and Recursion:***<br>
+***Calling Functions from other Functions:***<br>
 In case you want to maintain code readability or avoid duplicating code, Glem allows 
 you to use a function (or several functions) as an expression executed within 
 another function. With that, you can also define recursive functions.<br>
@@ -137,7 +137,9 @@ First, we have to define the innermost function, the last one to be actually
 called, but the first one to be executed fully. After that, we can call it from 
 another function. Thanks to Glem's parsing rules, there is an inherent 'call stack' 
 that is responsible for executing each expression in its appropriate scope.<br>
+<br>
 
+***Recursion:***<br>
 As for recursive functions, defining them can be a bit more challenging. Because 
 Glem doesn't support if-statements, you have to utilize boolean operations to define 
 your stop condition (base case).<br>
@@ -153,10 +155,9 @@ then the right expression won't be evaluated, and the statement returns ```True`
 when we get to ```n = 0```, the functions returns ```True``` to its caller, where ```n = 1```, 
 and doesn't continue to try and evaluate the second expression with negative values. When we 
 calculate ```1 * True```, it convert the value ```True``` to ```1``` so we get the result 
-```1 * True = 1 * 1 = 1```.<br>
+```1 * True = 1 * 1 = 1```. From this point on, only integers get returned by the fucntion 
+which ends up calculating the factorial of the value received by the user.<br>
 <br>
-
-
 </details>
 
 <details>
