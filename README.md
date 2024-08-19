@@ -20,7 +20,7 @@ our program reads the code line by line and executes it.<br>
 <summary> Documentation </summary>
 <br>
 
-***Data Types:***<br>
+### Data Types:
 In Glem we support the usage of integers and boolean values, 
 where all the values are immutable, and there are no variable assignments.<br>
 <br>
