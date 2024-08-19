@@ -147,12 +147,13 @@ a given number:
 ```
 mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
 ```
-For this function to be able to stop when it receives ```n``` with the value ```0```, 
-we had to define that in case of the OR operation, if the left expression (which is evaluated 
-first) is ```True```, then the right expression won't be evaluated, and the statement returns 
-the value ```True```. This way, when we get to ```n = 0```, the functions returns ```True``` 
-to its caller, where ```n = 1```, and when we calculate ```1 * True```, it convert the value 
-```True``` to ```1``` so we get the result ```1 * True = 1 * 1 = 1```.<br>
+For this function to be able to stop when it receives ```n = 0```, we had to define that in 
+case of the OR operation, if the left expression (which is evaluated first) is ```True```, 
+then the right expression won't be evaluated, and the statement returns ```True```. This way, 
+when we get to ```n = 0```, the functions returns ```True``` to its caller, where ```n = 1```, 
+and doesn't continue to try and evaluate the second expression with negative values. When we 
+calculate ```1 * True```, it convert the value ```True``` to ```1``` so we get the result 
+```1 * True = 1 * 1 = 1```.<br>
 <br>
 
 
