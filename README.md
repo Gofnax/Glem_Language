@@ -59,13 +59,27 @@ true
 ```
 <br>
 
+***Comments:***<br>
+Glem allows you to add comments to your code to elevate its readability just like 
+many other languages. To insert a comment in the code you simply need to wrap it 
+with ```#```'s.<br>
+For example:
+```
+...
+3 + 5;  # Example code #
+addThree(13);  # Works like addOne but increase value by 3 #
+5 * 2 # You can even put a comment in the middle of a statement # + true;
+...
+```
+<br>
+
 ***Functions:***<br>
 In Glem, you can define functions using the keyword ```mey``` and call them 
 anywhere in the code from the point of their definition onwards. 
 As Glem doesn't support variable assignment, writing a function that 
 executes multiple statement won't affect that function's returned value, 
 and only the result of the last statement will be returned.<br>
-<br>
+
 The format of a function definition is:
 ```
 mey {function_name, (arg1, arg2, ...)}
@@ -93,12 +107,13 @@ values that correspond to its expected values in them:
 ```
 <br>
 
+***Lambda Functions:***<br>
 In addition to regular functions, Glem supports the usage of anonymous 
 functions (lambda function/expressions). These allow you to write code with a higher 
 level of complexity than a regular statement, but without the need to define 
 a function beforehand. For Glem to recognize a lamda function, it has to be defined 
 using the ```lambda``` keyword.<br>
-<br>
+
 The format of a lambda function, as recognized by Glem is:
 ```
 Lambda param.(expression)
@@ -108,18 +123,32 @@ the lambda function expects to receive, and any expression can be written inside
 the brackets.<br>
 <br>
 
-***Comments:***<br>
-Glem allows you to add comments to your code to elevate its readability just like 
-many other languages. To insert a comment in the code you simply need to wrap it 
-with ```#```'s.<br>
-For example:
+***Calling Functions from other Functions and Recursion:***<br>
+In case you want to maintain code readability or avoid duplicating code, Glem allows 
+you to use a function (or several functions) as an expression executed within 
+another function. With that, you can also define recursive functions.<br>
+
+For example, here's a function call inside another function definition:
 ```
-...
-3 + 5;  # Example code #
-addThree(13);  # Works like addOne but increase value by 3 #
-5 * 2 # You can even put a comment in the middle of a statement # + true;
-...
+mey {addOne, (n)} {n + 1;};
+mey {addTwo, (n)} {addOne(n) + 1;};
 ```
+First, we have to define the innermost function, the last one to be actually 
+called, but the first one to be executed fully. After that, we can call it from
+another function. Thanks to Glem's parsing rules, there is an inherent 'call stack'
+that is responsible for executing each expression in its appropriate scope.<br>
+
+As for recursive functions, defining them can be a bit more challenging. Because
+Glem doesn't support if-statements, you have to utilize boolean operations to define
+your stop condition (base case).<br>
+
+For example, here we define a recursive function that calculates the factorial of 
+a given number:
+```
+mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
+```
+
+<br>
 
 
 </details>
