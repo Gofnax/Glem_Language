@@ -212,8 +212,8 @@ param_list ::= expression
 <summary> Design Choices </summary>
 <br>
 
-***Lexer:***<br>
-This part is responsible for tokenizing the user input so that we can create a string that 
+### Lexer:
+The lexer is responsible for tokenizing the user input so that we can create a string that 
 the language understands and can evaluate.
 
 **Design Considerations:**
@@ -231,8 +231,8 @@ and cannot be used as identifiers.
 support for other types like strings or floating-point numbers.
 <br>
 
-***Parser:***<br>
-This part is responsible for building the AST from the token the lexer provided it, 
+### Parser:
+The parser is responsible for building the AST from the token the lexer provided it, 
 allowing the interpreter to evaluate the user input and return the user the result they 
 were expecting to get from their program.
 
@@ -261,7 +261,26 @@ its value is immutable. This is consistent with the language's functional nature
 during parsing by ensuring identifiers are correctly mapped and not reassigned.
 <br>
 
-***Interpreter:***<br>
-Text text text.
+### Interpreter:
+The interpreter is responsible for evaluating an input string or a program received from the user 
+and returning them the final value that that input come sdown to.
+
+**Design Considerations:**
+* Managing an environment (a dictionary) to map identifiers to their corresponding values or functions. 
+A call stack is implemented by the grammar of the language, and simulated using a stack to manage 
+function calls and recursion.
+* AST nodes are evaluated by the interpreter based on their types, such as binary operations, function 
+calls, literals, etc.. It recursively processes the tree, applying operations and managing scopes, and
+at the end returning the final value of each statement.
+* The design includes support for lambda functions and higher-order functions, allowing functions to 
+be passed as arguments to other functions.
+
+**Assumptions:**
+* There is a determined sequence in which the expressions in each statement need to be evaluated 
+for the interpreter to return the correct final value.
+* The environment is assumed to be immutable, meaning that once a value is bound to an identifier, 
+it cannot be changed.
+* Each function definition ends with a single return value, which is the result of the evaluation of 
+the last statement in the function body.
 <br>
 </details>
