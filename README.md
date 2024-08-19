@@ -18,6 +18,7 @@ our program reads the code line by line and executes it.<br>
 
 <details>
 <summary> Documentation </summary>
+<br>
 
 ***Data Types:***<br>
 In Glem we support the usage of integers and boolean values, 
@@ -162,9 +163,10 @@ which ends up calculating the factorial of the value received by the user.<br>
 
 <details>
 <summary> BNF </summary>
-
-The syntax of Glem is as follows:<br>
+<br>
   
+The syntax of Glem is as follows:<br>
+
 ```
 program ::= statement_list
 
@@ -208,9 +210,15 @@ param_list ::= expression
 
 <details>
 <summary> Design Choices </summary>
+<br>
 
 ***Lexer:***<br>
-Text text text.
+This part is responsible for tokenizing the user input so that we can create a string that 
+the language understands and can evaluate.
+
+To describe what string gets translated to each token we chose to work with regular expressions 
+(or REGEX). This way we cover all the strings that the user can input without having to 
+actually write down each and every one of them.<br>
 <br>
 
 ***Parser:***<br>
