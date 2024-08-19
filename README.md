@@ -43,7 +43,7 @@ and boolean and comparison operations:
 * Less than or equal to (<=)
 <br>
 
-***Basic Usage:***<br>
+### Basic Usage:
 The basic way to make use of Glem is to write one-line expressions, 
 for which the interpreter will print the result. In addition, you can 
 write an expression inside an expression, as shown below. At the end 
@@ -60,7 +60,7 @@ true
 ```
 <br>
 
-***Comments:***<br>
+### Comments:
 Glem allows you to add comments to your code to elevate its readability just like 
 many other languages. To insert a comment in the code you simply need to wrap it 
 with ```#```'s.<br>
@@ -74,7 +74,7 @@ addThree(13);  # Works like addOne but increase value by 3 #
 ```
 <br>
 
-***Functions:***<br>
+### Functions:
 In Glem, you can define functions using the keyword ```mey``` and call them 
 anywhere in the code from the point of their definition onwards. 
 As Glem doesn't support variable assignment, writing a function that 
@@ -108,7 +108,7 @@ values that correspond to its expected values in them:
 ```
 <br>
 
-***Lambda Functions:***<br>
+### Lambda Functions:
 In addition to regular functions, Glem supports the usage of anonymous 
 functions (lambda function/expressions). These allow you to write code with a higher 
 level of complexity than a regular statement, but without the need to define 
@@ -124,7 +124,7 @@ the lambda function expects to receive, and any expression can be written inside
 the brackets.<br>
 <br>
 
-***Calling Functions from other Functions:***<br>
+### Calling Functions from other Functions:
 In case you want to maintain code readability or avoid duplicating code, Glem allows 
 you to use a function (or several functions) as an expression executed within 
 another function. With that, you can also define recursive functions.<br>
@@ -140,7 +140,7 @@ another function. Thanks to Glem's parsing rules, there is an inherent 'call sta
 that is responsible for executing each expression in its appropriate scope.<br>
 <br>
 
-***Recursion:***<br>
+### Recursion:
 As for recursive functions, defining them can be a bit more challenging. Because 
 Glem doesn't support if-statements, you have to utilize boolean operations to define 
 your stop condition (base case).<br>
