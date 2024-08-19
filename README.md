@@ -216,13 +216,49 @@ param_list ::= expression
 This part is responsible for tokenizing the user input so that we can create a string that 
 the language understands and can evaluate.
 
-To describe what string gets translated to each token we chose to work with regular expressions 
+**Design Considerations:**
+* To describe what string gets translated to each token we chose to work with regular expressions 
 (or REGEX). This way we cover all the strings that the user can input without having to 
-actually write down each and every one of them.<br>
+actually write down each and every one of them.
+* Whitespaces and single-line comments are ignored. This makes the source code more readable 
+without affecting the functionality.
+* The lexer includes a mechanism for identifying and reporting illegal characters.
+
+**Assumptions:**
+* It is assumed that keywords such as ```lambda``` and ```mey``` are always written in lowercase 
+and cannot be used as identifiers.
+* We assume all numbers are integers, and booleans are either ```true``` or ```false```. No 
+support for other types like strings or floating-point numbers.
 <br>
 
 ***Parser:***<br>
-Text text text.
+This part is responsible for building the AST from the token the lexer provided it, 
+allowing the interpreter to evaluate the user input and return the user the result they 
+were expecting to get from their program.
+
+**Design Considerations:**
+* The parser follows a clear set of grammar rules that align with the language's specifications. 
+Each grammar rule corresponds to a particular construct in the language, like expressions, function 
+definitions, and statements. The parser's main goal is to produce an Abstract Syntax Tree (AST) 
+that represents the structure of the source code.
+* Precedence rules for operators are defined by the parser to ensure correct evaluation order by 
+the interpreter. These rules are crucial for handling expressions with multiple operators, such 
+as arithmetic and logical operations.
+* It is able to recognize and store function definitions, and differentiate between function 
+definition and function call based on the syntax. Functions are stored in a dictionary within the 
+GlemParser class, where each key is the function name, and its value is a tuple that holds the 
+arguments the function expects to get, and all the statements that it expects to execute upon 
+call. It also handles function calls, ensuring that parameters are passed correctly according 
+to the language's rules and the function's expectations.
+
+**Assumptions:**
+* The parser assumes a fixed grammar structure, meaning that function definitions, expressions, 
+and other constructs follow a strict format. For instance, function definitions must always use 
+the ```mey``` keyword followed by the correct syntax, and expressions must adhere to the defined 
+operator precedence.
+* The parser assumes that once an identifier is defined within a function or lambda expression, 
+its value is immutable. This is consistent with the language's functional nature and is enforced 
+during parsing by ensuring identifiers are correctly mapped and not reassigned.
 <br>
 
 ***Interpreter:***<br>
