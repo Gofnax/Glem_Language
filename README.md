@@ -161,8 +161,8 @@ which ends up calculating the factorial of the value received by the user.<br>
 </details>
 
 <details>
-<summary>BNF</summary>
-<br>
+<summary> BNF </summary>
+
 The syntax of Glem is as follows:<br>
   
 ```
@@ -190,18 +190,34 @@ expression ::= expression "+" expression
              | expression "<=" expression
              | "!" expression
              | "(" expression ")"
-             | number
-             | boolean
-             | identifier
-             | identifier "(" param_list ")"
-             | "lambda" identifier "." "(" expression ")"
+             | NUMBER
+             | BOOLEAN
+             | IDENTIFIER
+             | IDENTIFIER "(" param_list ")"
+             | "lambda" IDENTIFIER "." "(" expression ")"
 
-function_definition ::= "mey" "{" identifier "," "(" arg_list ")" "}" "{" statement_list "}" ";"
+function_definition ::= "mey" "{" IDENTIFIER "," "(" arg_list ")" "}" "{" statement_list "}" ";"
 
-arg_list ::= identifier
-           | identifier "," arg_list
+arg_list ::= IDENTIFIER
+           | IDENTIFIER "," arg_list
 
 param_list ::= expression
              | expression "," param_list
 ```
+</details>
+
+<details>
+<summary> Design Choices </summary>
+
+***Lexer:***<br>
+Text text text.
+<br>
+
+***Parser:***<br>
+Text text text.
+<br>
+
+***Interpreter:***<br>
+Text text text.
+<br>
 </details>
