@@ -134,12 +134,12 @@ mey {addOne, (n)} {n + 1;};
 mey {addTwo, (n)} {addOne(n) + 1;};
 ```
 First, we have to define the innermost function, the last one to be actually 
-called, but the first one to be executed fully. After that, we can call it from
-another function. Thanks to Glem's parsing rules, there is an inherent 'call stack'
+called, but the first one to be executed fully. After that, we can call it from 
+another function. Thanks to Glem's parsing rules, there is an inherent 'call stack' 
 that is responsible for executing each expression in its appropriate scope.<br>
 
-As for recursive functions, defining them can be a bit more challenging. Because
-Glem doesn't support if-statements, you have to utilize boolean operations to define
+As for recursive functions, defining them can be a bit more challenging. Because 
+Glem doesn't support if-statements, you have to utilize boolean operations to define 
 your stop condition (base case).<br>
 
 For example, here we define a recursive function that calculates the factorial of 
@@ -147,7 +147,12 @@ a given number:
 ```
 mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
 ```
-
+For this function to be able to stop when it receives ```n``` with the value ```0```, 
+we had to define that in case of the OR operation, if the left expression (which is evaluated 
+first) is ```True```, then the right expression won't be evaluated, and the statement returns 
+the value ```True```. This way, when we get to ```n = 0```, the functions returns ```True``` 
+to its caller, where ```n = 1```, and when we calculate ```1 * True```, it convert the value 
+```True``` to ```1``` so we get the result ```1 * True = 1 * 1 = 1```.<br>
 <br>
 
 
