@@ -31,11 +31,17 @@ def run_interactive_mode():
                 break
             if user_input.strip() == '':
                 continue
-            ast = parser.parse(user_input)
+            if not user_input.endswith(';'):
+                ast = parser.parse(user_input + ';')
+            else:
+                ast = parser.parse(user_input)
             result = interpreter.eval(ast)
             while callable(result):
                 user_input = input('> Insert value for lambda:\n> ')
-                t_ast = parser.parse(user_input)
+                if not user_input.endswith(';'):
+                    t_ast = parser.parse(user_input + ';')
+                else:
+                    t_ast = parser.parse(user_input)
                 temp = interpreter.eval(t_ast)
                 result = result(temp)
                 if result is not None and not callable(result):
@@ -44,17 +50,17 @@ def run_interactive_mode():
             print(f"Error: {e}")
 
 
-if __name__ == '__main__':
-    if len(sys.argv) > 1:
-        file_path = sys.argv[1]
-        if file_path.endswith('.lambda'):
-            try:
-                with open(file_path, 'r') as file:
-                    program = file.read()
-                    run_lambda_program(program)
-            except FileNotFoundError:
-                print("File not found")
-        else:
-            print(f"Error: {file_path} is not a valid .lambda file.")
-    else:
-        run_interactive_mode()
+# if __name__ == '__main__':
+#     if len(sys.argv) > 1:
+#         file_path = sys.argv[1]
+#         if file_path.endswith('.lambda'):
+#             try:
+#                 with open(file_path, 'r') as file:
+#                     program = file.read()
+#                     run_lambda_program(program)
+#             except FileNotFoundError:
+#                 print("File not found")
+#         else:
+#             print(f"Error: {file_path} is not a valid .lambda file.")
+#     else:
+#         run_interactive_mode()

@@ -65,7 +65,7 @@ t_ignore_COMMENT = r'\#[a-zA-Z0-9 ]*\#'
 
 # Error handling rule
 def t_error(t):
-    print(f"Illegal character '{t.value[0]}'")
+    print(f"Illegal character '{t.value[0]}' at line {t.lineno}, position {t.lexpos}")
     t.lexer.skip(1)
 
 

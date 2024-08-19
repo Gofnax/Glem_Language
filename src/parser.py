@@ -130,7 +130,10 @@ def p_param_list(p):
 
 
 def p_error(p):
-    print(f"Syntax error at '{p.value}'")
+    if p:
+        print(f"Syntax error at token '{p.value}' (line {p.lineno}, position {p.lexpos})")
+    else:
+        print("Syntax error at end of input")
 
 
 # Build the parser
