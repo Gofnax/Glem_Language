@@ -72,6 +72,8 @@ addThree(13);  # Works like addOne but increase value by 3 #
 5 * 2 # You can even put a comment in the middle of a statement # + true;
 ...
 ```
+A comment can only include the letters a-z and A-Z, digits 0-9, spcaes ```' '```,
+dots ```.```, and commas ```,```, and colon ```:```.
 <br>
 
 ### Functions:
@@ -212,6 +214,7 @@ language. Among them are:
 * Variable assignment
 * Conditional statements
 * Shortage of data types
+* Only sinle-line comments
 
 The trade-off of these concepts not being supported, is keeping the language simple. There 
 aren't many keywords and grammar rules the user needs to get to know and remember to be able 
@@ -277,9 +280,9 @@ The interpreter is responsible for evaluating an input string or a program recei
 and returning them the final value that that input come sdown to.
 
 **Design Considerations:**
-* Managing an environment (a dictionary) to map identifiers to their corresponding values or functions. 
-A call stack is implemented by the grammar of the language, and simulated using a stack to manage 
-function calls and recursion.
+* Managing an environment (a dictionary) to map identifiers to their corresponding values or functions, 
+to resemble memory storage. A call stack is implemented by the grammar of the language, and simulated 
+using a stack to manage function calls and recursion.
 * AST nodes are evaluated by the interpreter based on their types, such as binary operations, function 
 calls, literals, etc.. It recursively processes the tree, applying operations and managing scopes, and
 at the end returning the final value of each statement.
@@ -291,5 +294,23 @@ for the interpreter to return the correct final value.
 it cannot be changed.
 * Each function definition ends with a single return value, which is the result of the evaluation of 
 the last statement in the function body.
+<br>
+
+### Challenges and Solutions:
+This is our first try at writing an interpreter of any kind, and our first actual project implemented 
+using Python. As a result, we faced quite a few challenges with building this project.
+* Unfamiliar syntax and conventions: being inexperienced with a language poses many challenges in its 
+own. You have to learn the syntax anew for features you're familiar with from other languages, and 
+the languages nuances may differ (such as memory managemen, data types implementation, object methods, 
+etc.).
+* No prior knowledge of the interpreter's way of work: we had to create an interpreter for a language 
+without being taught the details of how the interpreter works, what parts it's composed of, or how
+each part communicates with the other.
+
+Regardless, we had to make the project work, so obviously we had a lot of learning and experimenting 
+to do in order to familiarize ourselves with Python and the operation process of the interpreter. We 
+mainly relied on many different forums and on ChatGPT as knowledge sources and reference points when 
+we had to find out how certain things are done, or if they are possible to implement in the way we 
+know from other languages.
 <br>
 </details>
