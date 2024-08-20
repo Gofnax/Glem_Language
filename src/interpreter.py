@@ -26,6 +26,8 @@ class Interpreter:
                 elif node[0] == 'identifier':
                     if node[1] in env:
                         return env[node[1]]
+                    elif node[1] in GlemParser.functions:
+                        return node[1]
                     else:
                         raise RuntimeError(f"Undefined identifier '{node[1]}'")
                     # return env.get(node[1], node[1])
@@ -50,7 +52,7 @@ class Interpreter:
                     return f"Function '{node[1]}' defined."
                     # return node[1] + " defined."
                 elif node[0] == 'call':
-                    func_name = node[1]
+                    func_name = env.get(node[1], node[1])
                     if func_name not in GlemParser.functions:
                         raise NameError(f"Undefined function '{func_name}'")
                     func = GlemParser.functions[func_name]
@@ -127,10 +129,11 @@ interpreter = Interpreter()
 # ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {addTwo, (n)} {addOne(n) + 1;}; addTwo(3);')
 # ast = parser.parse('lambda x.(lambda y.(y+1));')
 # ast = parser.parse('(1 == 0) || (2 + 3 + true);')
-# result = interpreter.eval(ast)
+ast = parser.parse('mey {addOne, (n)} {n + 1;}; mey {doLambda, (action, arg)} {action(arg);}; doLambda(lambda x.(x+1), 3);')
+result = interpreter.eval(ast)
 # while callable(result):
 #     result = result(10)
-# print(result)
+print(result)
 # test_cases = [
 #     ('Missing semicolon', 'lambda x.(x+1)', 'Syntax error'),
 #     ('Unclosed parenthesis', '1 + (2 * 3', 'Syntax error'),
