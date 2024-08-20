@@ -57,7 +57,20 @@ if __name__ == '__main__':
             try:
                 with open(file_path, 'r') as file:
                     program = file.read()
-                    run_lambda_program(program)
+                    program.split(';')
+                    for stmt in program:
+                        stmt += ';'
+                        func_def = []
+                        addToList = False
+                        if stmt[0:3] == 'mey' or addToList:
+                            addToList = True
+                            func_def.append(stmt)
+                        if stmt[0] == '}':
+                            addToList = False
+                            func_def.append(stmt)
+                            stmtToRun = " ".join(func_def)
+                            run_lambda_program(stmtToRun)
+                        run_lambda_program(stmt)
             except FileNotFoundError:
                 print("File not found")
         else:
