@@ -16,6 +16,8 @@ at a time and see the result of each line immediately after execution.
 user can provide the path to a file they wrote a Glem program in, and 
 our program reads the code line by line and executes it.<br>
 
+----
+
 <details>
 <summary> Documentation </summary>
 <br>
@@ -163,6 +165,8 @@ which ends up calculating the factorial of the value received by the user.
 <br>
 </details>
 
+----
+
 <details>
 <summary> BNF and Language Limitations </summary>
 <br>
@@ -221,6 +225,104 @@ aren't many keywords and grammar rules the user needs to get to know and remembe
 to write working code in Glem.
 <br>
 </details>
+
+----
+
+<details>
+<summary> User Guide for Running the Interpreter </summary>
+<br>
+
+Welcome to the Glem Language Interpreter User Guide. This guide provides instructions on how to 
+run the interpreter in both interactive mode (REPL) and file reading mode.
+
+### System Requirements:
+To run the Glem Language Interpreter, you will need:
+* Python 3.6 or higher and pip (Python's package installer) installed on your machine
+* Our repository cloned to your machine
+<br>
+
+### Installing PLY Module:
+Our project is based on the PLY module, so to run it correctly using the command prompt or the 
+terminal, you need to install it using the next command:
+```
+pip install ply
+```
+<br>
+
+### Interactive Mode (REPL):
+Interactive mode allows you to enter and execute Glem language commands one at a time. This mode 
+is useful for testing snippets of code quickly.
+
+To start the interpreter in interactive mode:
+1. Open a terminal or command prompt.
+2. Navigate to the directory where the program.py file is located.
+3. Type the following command and press 'Enter':
+```
+python Program.py
+```
+4. You will see a prompt that says "Welcome to the Glem Language Interpreter. Type 'exit' to quit."
+Enter your commands after the > prompt.
+5. To exit the interactive mode, type exit and press Enter.
+
+**Sample session:**
+```
+> mey {addOne, (n)} {n + 1;};
+Function 'addOne' defined.
+> addOne(5);
+6
+> exit
+```
+<br>
+
+### File Reading Mode:
+File reading mode allows you to execute a script written in the Glem language saved in a file with a 
+.lambda suffix.
+
+To run a .lambda file:
+1. Ensure your file has a .lambda suffix and contains valid Glem language code.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where both your .lambda file and program.py are located.
+4. Run the following command, replacing your_script.lambda with the name of your file:
+```
+python Program.py your_script.lambda
+```
+5. The interpreter will execute the contents of the file and display the outputs sequentially.
+
+**Sample Session:**<br>
+example.lambda file contains:
+```
+mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
+factorial(5);
+```
+
+Command to run:
+```
+python Program.py example.lambda
+```
+
+Expected output:
+```
+120
+```
+<br>
+
+### Error Handling
+If there are any errors in your Glem language code, whether syntax or runtime, the interpreter will 
+display an error message detailing the issue. For instance, using an undefined function or variable 
+will prompt an error indicating that the identifier is undefined.
+<br>
+
+### Notes
+* Ensure that all Glem language commands and functions in your scripts adhere to the syntax rules as 
+specified by the language's grammar.
+* The interpreter can handle basic arithmetic, logical operations, function definitions, and lambda 
+expressions as outlined in the Glem language specifications.
+
+For more information or support, refer to the official documentation.
+<br>
+</details>
+
+----
 
 <details>
 <summary> Design Choices </summary>
@@ -301,10 +403,10 @@ This is our first try at writing an interpreter of any kind, and our first actua
 using Python. As a result, we faced quite a few challenges with building this project.
 * Unfamiliar syntax and conventions: being inexperienced with a language poses many challenges in its 
 own. You have to learn the syntax anew for features you're familiar with from other languages, and 
-the languages nuances may differ (such as memory managemen, data types implementation, object methods, 
+the languages nuances may differ (such as memory management, data types implementation, object methods, 
 etc.).
 * No prior knowledge of the interpreter's way of work: we had to create an interpreter for a language 
-without being taught the details of how the interpreter works, what parts it's composed of, or how
+without being taught the intricacies of how the interpreter works, what parts it's composed of, or how
 each part communicates with the other.
 
 Regardless, we had to make the project work, so obviously we had a lot of learning and experimenting 
