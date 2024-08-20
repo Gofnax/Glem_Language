@@ -4,6 +4,7 @@ addTwo(3);
 lambda x.(x+1);
 5;
 addOne(6);
+1 + (2 * 3;
 lambda x.(lambda y.(x + y));
 4;
 4;

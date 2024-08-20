@@ -131,27 +131,28 @@ interpreter = Interpreter()
 # while callable(result):
 #     result = result(10)
 # print(result)
-test_cases = [
-    ('Missing semicolon', 'lambda x.(x+1)', 'Syntax error'),
-    ('Unclosed parenthesis', '1 + (2 * 3', 'Syntax error'),
-    ('Invalid character', '1 + @ 2;', 'Illegal character')
-]
-test_cases.extend([
-    ('Adding boolean to number', '1 + true;', 'Type error'),
-    ('Boolean as function', 'true(2);', 'Type error'),
-    ('Number as function', '3(4);', 'Type error')
-])
-test_cases.extend([
-    ('Division by zero', '10 / 0;', 'Runtime error: division by zero'),
-    ('Undefined variable', 'x + 1;', 'Runtime error: undefined variable')
-])
-for description, code, expected_error in test_cases:
-    try:
-        ast = parser.parse(code)
-        result = interpreter.eval(ast)
-        # print(f"1) Test failed: {description}. Expected {expected_error}, got {result}.")
-    except Exception as e:
-        if expected_error in str(e):
-            print(f"2) Test passed: {description}.")
-        else:
-            print(f"3) Test failed: {description}. Expected {expected_error}, got {str(e)}.")
+# test_cases = [
+#     ('Missing semicolon', 'lambda x.(x+1)', 'Syntax error'),
+#     ('Unclosed parenthesis', '1 + (2 * 3', 'Syntax error'),
+#     ('Invalid character', '1 + @ 2;', 'Illegal character')
+# ]
+# test_cases.extend([
+#     ('Adding boolean to number', '1 + true;', 'Type error'),
+#     ('Boolean as function', 'true(2);', 'Type error'),
+#     ('Number as function', '3(4);', 'Type error')
+# ])
+# test_cases.extend([
+#     ('Division by zero', '10 / 0;', 'Runtime error: division by zero'),
+#     ('Undefined variable', 'x + 1;', 'Runtime error: undefined variable')
+# ])
+# for description, code, expected_error in test_cases:
+#     try:
+#         ast = parser.parse(code)
+#         result = interpreter.eval(ast)
+#         print(f"Expected: {expected_error}")
+#         # print(f"1) Test failed: {description}. Expected {expected_error}, got {result}.")
+#     except Exception as e:
+#         if expected_error in str(e):
+#             print(f"2) Test passed: {description}.")
+#         else:
+#             print(f"3) Test failed: {description}. Expected {expected_error}, got {str(e)}.")

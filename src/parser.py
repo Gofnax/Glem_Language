@@ -89,8 +89,8 @@ def p_expression_identifier(p):
 def p_expression_function_call(p):
     '''expression : IDENTIFIER LPAREN param_list RPAREN'''
     func_name = p[1]
-    if GlemParser.functions.get(func_name) is None:
-        GlemParser.functions[func_name] = ()
+    # if GlemParser.functions.get(func_name) is None:
+    #     GlemParser.functions[func_name] = ()
 
     p[0] = ('call', p[1], p[3])
 
