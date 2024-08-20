@@ -58,8 +58,13 @@ def t_IDENTIFIER(t):
     return t
 
 
+def t_newline(t):
+    r'\n+'
+    t.lexer.lineno += len(t.value)
+
+
 # Ignore whitespace, new line and comments
-t_ignore = ' \t \n'
+t_ignore = ' \t '
 t_ignore_COMMENT = r'\#[a-zA-Z0-9 ]*\#'
 
 
