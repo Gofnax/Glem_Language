@@ -237,8 +237,16 @@ run the interpreter in both interactive mode (REPL) and file reading mode.
 
 ### System Requirements:
 To run the Glem Language Interpreter, you will need:
-* Python 3.6 or higher installed on your machine
+* Python 3.6 or higher and pip (Python's package installer) installed on your machine
 * Our repository cloned to your local machine
+<br>
+
+### Installing PLY Module:
+Our project is based on the PLY module, so to run it correctly using the command prompt or the 
+terminal, you need to install it using the next command:
+```
+pip install ply
+```
 <br>
 
 ### Interactive Mode (REPL):
@@ -250,7 +258,7 @@ To start the interpreter in interactive mode:
 2. Navigate to the directory where the program.py file is located.
 3. Type the following command and press 'Enter':
 ```
-python program.py
+python Program.py
 ```
 4. You will see a prompt that says "Welcome to the Glem Language Interpreter. Type 'exit' to quit."
 Enter your commands after the > prompt.
@@ -276,7 +284,7 @@ To run a .lambda file:
 3. Navigate to the directory where both your .lambda file and program.py are located.
 4. Run the following command, replacing your_script.lambda with the name of your file:
 ```
-python program.py your_script.lambda
+python Program.py your_script.lambda
 ```
 5. The interpreter will execute the contents of the file and display the outputs sequentially.
 
@@ -289,7 +297,7 @@ factorial(5);
 
 Command to run:
 ```
-python program.py example.lambda
+python Program.py example.lambda
 ```
 
 Expected output:
