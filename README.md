@@ -274,7 +274,7 @@ python program.py your_script.lambda
 ```
 5. The interpreter will execute the contents of the file and display the outputs sequentially.
 
-**Sample Session:**
+**Sample Session:**<br>
 example.lambda file contains:
 ```
 mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
