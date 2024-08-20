@@ -121,11 +121,13 @@ using the ```lambda``` keyword.<br>
 
 The format of a lambda function, as recognized by Glem is:
 ```
-Lambda param.(expression)
+Lambda param.(expression); arg;
 ```
 Where ```param``` can be switched with any other identifier for the parameter 
 the lambda function expects to receive, and any expression can be written inside 
-the brackets.<br>
+the brackets. To immediately invoke the lambda function, an argument has to be sent 
+to it in the following statement. If you run the program in the REPL mode, you will 
+see a prompt urging you to insert the argument.<br>
 <br>
 
 ### Calling Functions from other Functions:
@@ -388,6 +390,8 @@ using a stack to manage function calls and recursion.
 * AST nodes are evaluated by the interpreter based on their types, such as binary operations, function 
 calls, literals, etc.. It recursively processes the tree, applying operations and managing scopes, and
 at the end returning the final value of each statement.
+* The design includes support for higher-order functions, allowing functions to be passed as arguments 
+to other functions.
 
 **Assumptions:**
 * There is a determined sequence in which the expressions in each statement need to be evaluated 
