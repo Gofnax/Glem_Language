@@ -16,6 +16,8 @@ at a time and see the result of each line immediately after execution.
 user can provide the path to a file they wrote a Glem program in, and 
 our program reads the code line by line and executes it.<br>
 
+----
+
 <details>
 <summary> Documentation </summary>
 <br>
@@ -163,6 +165,8 @@ which ends up calculating the factorial of the value received by the user.
 <br>
 </details>
 
+----
+
 <details>
 <summary> BNF and Language Limitations </summary>
 <br>
@@ -221,6 +225,8 @@ aren't many keywords and grammar rules the user needs to get to know and remembe
 to write working code in Glem.
 <br>
 </details>
+
+----
 
 <details>
 <summary> User Guide for Running the Interpreter </summary>
@@ -308,6 +314,8 @@ For more information or support, refer to the official documentation.
 <br>
 </details>
 
+----
+
 <details>
 <summary> Design Choices </summary>
 <br>
@@ -390,7 +398,7 @@ own. You have to learn the syntax anew for features you're familiar with from ot
 the languages nuances may differ (such as memory management, data types implementation, object methods, 
 etc.).
 * No prior knowledge of the interpreter's way of work: we had to create an interpreter for a language 
-without being taught the details of how the interpreter works, what parts it's composed of, or how
+without being taught the intricacies of how the interpreter works, what parts it's composed of, or how
 each part communicates with the other.
 
 Regardless, we had to make the project work, so obviously we had a lot of learning and experimenting 
