@@ -223,6 +223,92 @@ to write working code in Glem.
 </details>
 
 <details>
+<summary> User Guide for Running the Interpreter </summary>
+<br>
+
+Welcome to the Glem Language Interpreter User Guide. This guide provides instructions on how to 
+run the interpreter in both interactive mode (REPL) and file reading mode.
+
+### System Requirements:
+To run the Glem Language Interpreter, you will need:
+* Python 3.6 or higher installed on your machine
+* Our repository cloned to your local machine
+<br>
+
+### Interactive Mode (REPL):
+Interactive mode allows you to enter and execute Glem language commands one at a time. This mode 
+is useful for testing snippets of code quickly.
+
+To start the interpreter in interactive mode:
+1. Open a terminal or command prompt.
+2. Navigate to the directory where the program.py file is located.
+3. Type the following command and press 'Enter':
+```
+python program.py
+```
+4. You will see a prompt that says "Welcome to the Glem Language Interpreter. Type 'exit' to quit."
+Enter your commands after the > prompt.
+5. To exit the interactive mode, type exit and press Enter.
+
+**Sample session:**
+```
+> mey {addOne, (n)} {n + 1;};
+Function 'addOne' defined.
+> addOne(5);
+6
+> exit
+```
+<br>
+
+### File Reading Mode:
+File reading mode allows you to execute a script written in the Glem language saved in a file with a 
+.lambda suffix.
+
+To run a .lambda file:
+1. Ensure your file has a .lambda suffix and contains valid Glem language code.
+2. Open a terminal or command prompt.
+3. Navigate to the directory where both your .lambda file and program.py are located.
+4. Run the following command, replacing your_script.lambda with the name of your file:
+```
+python program.py your_script.lambda
+```
+5. The interpreter will execute the contents of the file and display the outputs sequentially.
+
+**Sample Session:
+example.lambda file contains:
+```
+mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
+factorial(5);
+```
+
+Command to run:
+```
+python program.py example.lambda
+```
+
+Expected output:
+```
+120
+```
+<br>
+
+### Error Handling
+If there are any errors in your Glem language code, whether syntax or runtime, the interpreter will 
+display an error message detailing the issue. For instance, using an undefined function or variable 
+will prompt an error indicating that the identifier is undefined.
+<br>
+
+### Notes
+* Ensure that all Glem language commands and functions in your scripts adhere to the syntax rules as 
+specified by the language's grammar.
+* The interpreter can handle basic arithmetic, logical operations, function definitions, and lambda 
+expressions as outlined in the Glem language specifications.
+
+For more information or support, refer to the official documentation.
+<br>
+</details>
+
+<details>
 <summary> Design Choices </summary>
 <br>
 
