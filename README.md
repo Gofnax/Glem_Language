@@ -238,7 +238,7 @@ run the interpreter in both interactive mode (REPL) and file reading mode.
 ### System Requirements:
 To run the Glem Language Interpreter, you will need:
 * Python 3.6 or higher and pip (Python's package installer) installed on your machine
-* Our repository cloned to your local machine
+* Our repository cloned to your machine
 <br>
 
 ### Installing PLY Module:
