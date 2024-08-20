@@ -57,22 +57,44 @@ if __name__ == '__main__':
             try:
                 with open(file_path, 'r') as file:
                     program = file.read()
-                    program.split(';')
-                    for stmt in program:
-                        stmt += ';'
-                        func_def = []
-                        addToList = False
-                        if stmt[0:3] == 'mey' or addToList:
-                            addToList = True
-                            func_def.append(stmt)
-                        if stmt[0] == '}':
-                            addToList = False
-                            func_def.append(stmt)
-                            stmtToRun = " ".join(func_def)
-                            run_lambda_program(stmtToRun)
-                        run_lambda_program(stmt)
+                    Gilad = program.split(';')
+                    print(Gilad)
+                    addToList = False
+                    func_def = []
+                    lambda_def = []
+                    count = 0
+                    for stmt in Gilad:
+                        try:
+                            if stmt == '' or stmt == '\n':
+                                continue
+                            stmt += ';'
+                            if "mey" in stmt[0:5] or addToList:
+                                addToList = True
+                                func_def.append(stmt)
+                                if stmt[0] == '}':
+                                    addToList = False
+                                    stmtToRun = " ".join(func_def)
+                                    func_def = []
+                                    run_lambda_program(stmtToRun)
+                            elif "lambda" in stmt:
+                                count = stmt.count("lambda")
+                                lambda_def.append(stmt)
+                            elif count > 0:
+                                lambda_def.append(stmt)
+                                count -= 1
+                                if count == 0:
+                                    lambdaToRun = " ".join(lambda_def)
+                                    lambda_def = []
+                                    run_lambda_program(lambdaToRun)
+                            else:
+                                run_lambda_program(stmt)
+                        except Exception as e:
+                            print(f"Error processing statement: {stmt}.")
             except FileNotFoundError:
                 print("File not found")
+            except Exception as e:
+                print(f"Error opening file: {e}")
+
         else:
             print(f"Error: {file_path} is not a valid .lambda file.")
     else:
