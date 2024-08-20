@@ -274,7 +274,7 @@ python program.py your_script.lambda
 ```
 5. The interpreter will execute the contents of the file and display the outputs sequentially.
 
-**Sample Session:
+**Sample Session:**
 example.lambda file contains:
 ```
 mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
@@ -387,7 +387,7 @@ This is our first try at writing an interpreter of any kind, and our first actua
 using Python. As a result, we faced quite a few challenges with building this project.
 * Unfamiliar syntax and conventions: being inexperienced with a language poses many challenges in its 
 own. You have to learn the syntax anew for features you're familiar with from other languages, and 
-the languages nuances may differ (such as memory managemen, data types implementation, object methods, 
+the languages nuances may differ (such as memory management, data types implementation, object methods, 
 etc.).
 * No prior knowledge of the interpreter's way of work: we had to create an interpreter for a language 
 without being taught the details of how the interpreter works, what parts it's composed of, or how
