@@ -157,16 +157,15 @@ when we get to ```n = 0```, the functions returns ```True``` to its caller, wher
 and doesn't continue to try and evaluate the second expression with negative values. When we 
 calculate ```1 * True```, it convert the value ```True``` to ```1``` so we get the result 
 ```1 * True = 1 * 1 = 1```. From this point on, only integers get returned by the fucntion 
-which ends up calculating the factorial of the value received by the user.<br>
+which ends up calculating the factorial of the value received by the user.
 <br>
 </details>
 
 <details>
-<summary> BNF </summary>
+<summary> BNF and Language Limitations </summary>
 <br>
   
-The syntax of Glem is as follows:<br>
-
+### Language Syntax:
 ```
 program ::= statement_list
 
@@ -206,6 +205,18 @@ arg_list ::= IDENTIFIER
 param_list ::= expression
              | expression "," param_list
 ```
+
+### Language Limitations:
+Glem is designed in such a way that there are a few concepts that are not supported by the 
+language. Among them are:
+* Variable assignment
+* Conditional statements
+* Shortage of data types
+
+The trade-off of these concepts not being supported, is keeping the language simple. There 
+aren't many keywords and grammar rules the user needs to get to know and remember to be able 
+to write working code in Glem.
+<br>
 </details>
 
 <details>
