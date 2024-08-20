@@ -1,15 +1,41 @@
-mey {addOne, (n)} {n + 1;};
-mey {addTwo, (n)} {addOne(n) + 1;};
-addTwo(3);
+# basic statements #
+3 + 5;	# expect: 8 #
+!true;	# expect: 'false' #
+1 + true;	# expect: 2 #
+-3 + (3 + 5) * 2; !true; true; 3 > 5 || 5 == 3;	# expect: 13, 'false', 'true', 'false' #
+
+# function #
+mey {addOne, (n)} {n + 1;};	# function definition #
+mey {_addTwo, (n)} {addOne(n) + 1;};	# function within function #
+addOne(2);	# expect: 3 #
+addOne(5 + 4);	# expect: 10 #
+_addTwo(3);	# expect: 5 #
+addOne(_addTwo(5));	# expect: 8 #
+mey {addition, (n, m)} {n + m;};	# multiplte parameter function definition #
+addition(3, 8);	# expect: 11 #
+mey {multiStmt, (n, m)} {n * 2; m + 3; !true; n - 2 * m;};	# function with multiple statements #
+multiStmt(6, 4);	# expect: -2 #
+mey {doFunc, (action, arg)} {action(arg);};	# higher-order function definition #
+doFunc(addOne, 17);	# expect: 18 #
+
+# recursive function #
+mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));};
+factorial(5);	# expect: 120 #
+
+# while loop implementation #
+mey {loop, (count, total, cond)} {(cond && loop(count - 1, addOne(total), count - 1 > 0)) || ((1 - cond) && total);};
+loop(5, 10, true);	# do loop 5 times. expect: 15 #
+
+# lambda function #
 lambda x.(x+1);
-5;
-addOne(6);
-1 + (2 * 3;
-lambda x.(lambda y.(lambda z.(x + y + z)));
-4;
-4;
-addTwo(7);
-lambda x.(lambda y.(y+1));
-5;
-6;
-mey {factorial, (n)} {(n == 0) || (n * factorial(n - 1));}; true; factorial(5);
+5;	# expect: 6 #
+lambda x.(lambda y.(x + y)); 4; 4;	# expect: 8 #
+lambda x.(_addTwo(x)); 13;	# expect: 15 #
+
+# error cases #
+1 + (2 * 3;	# expect: syntex error #
+10 / 0;	# expect: division by zero error #
+x + 1;	# expect: undefined identifier error #
+true(2);	# expect: syntax error #
+1 + @ 2;	# expect: 2 #
+addThree(5);	# expected: undefined function error #
