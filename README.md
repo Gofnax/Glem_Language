@@ -79,7 +79,7 @@ In Glem, you can define functions using the keyword ```mey``` and call them
 anywhere in the code from the point of their definition onwards. 
 As Glem doesn't support variable assignment, writing a function that 
 executes multiple statement won't affect that function's returned value, 
-and only the result of the last statement will be returned.<br>
+and only the result of the last statement will be returned for further calculations.<br>
 
 The format of a function definition is:
 ```
@@ -272,8 +272,6 @@ function calls and recursion.
 * AST nodes are evaluated by the interpreter based on their types, such as binary operations, function 
 calls, literals, etc.. It recursively processes the tree, applying operations and managing scopes, and
 at the end returning the final value of each statement.
-* The design includes support for lambda functions and higher-order functions, allowing functions to 
-be passed as arguments to other functions.
 
 **Assumptions:**
 * There is a determined sequence in which the expressions in each statement need to be evaluated 
