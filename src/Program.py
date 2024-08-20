@@ -31,18 +31,13 @@ def run_interactive_mode():
                 break
             if user_input.strip() == '':
                 continue
-            # if not user_input.endswith(';'):
-            #     ast = parser.parse(user_input + ';')
             else:
                 ast = parser.parse(user_input)
             result = interpreter.eval(ast)
             while callable(result):
-                user_input = input('> Insert value for lambda:\n> ')
-                if not user_input.endswith(';'):
-                    t_ast = parser.parse(user_input + ';')
-                else:
-                    t_ast = parser.parse(user_input)
-                temp = interpreter.eval(t_ast)
+                user_input = input('Insert value for lambda:\n> ')
+                temp_ast = parser.parse(user_input)
+                temp = interpreter.eval(temp_ast)
                 result = result(temp)
                 if result is not None and not callable(result):
                     print(result)
@@ -57,13 +52,12 @@ if __name__ == '__main__':
             try:
                 with open(file_path, 'r') as file:
                     program = file.read()
-                    Gilad = program.split(';')
-                    print(Gilad)
+                    stmtList = program.split(';')
                     addToList = False
                     func_def = []
                     lambda_def = []
                     count = 0
-                    for stmt in Gilad:
+                    for stmt in stmtList:
                         try:
                             if stmt == '' or stmt == '\n':
                                 continue
