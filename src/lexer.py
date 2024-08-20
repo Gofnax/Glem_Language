@@ -84,7 +84,7 @@ def t_newline(t):
 # Ignored characters (spaces, tabs, and comments)
 # Comments are enclosed in '#' and ignored by the lexer
 t_ignore = ' \t '
-t_ignore_COMMENT = r'\#[a-zA-Z0-9,.: ]*\#'
+t_ignore_COMMENT = r'\#[a-zA-Z0-9.:\-\, ]*\#'
 
 
 # Error handling rule for illegal characters

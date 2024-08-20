@@ -78,7 +78,7 @@ if __name__ == '__main__':
                             if stmt == '' or stmt == '\n':  # Skip empty or newline-only statements
                                 continue
                             stmt += ';'
-                            if "mey" in stmt[0:5] or addToList:  # Detect function definition start
+                            if "mey" in stmt or addToList:  # Detect function definition start
                                 addToList = True
                                 func_def.append(stmt)
                                 if stmt[0] == '}':  # Detect function definition end
